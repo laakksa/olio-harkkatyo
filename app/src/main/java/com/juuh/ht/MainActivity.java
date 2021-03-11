@@ -15,5 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void helloworld(View v){
         System.out.println("dxd");
+        System.out.println("asdasdas");
+        System.out.println("asdasdas");
     }
 }
