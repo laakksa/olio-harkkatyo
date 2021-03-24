@@ -25,11 +25,12 @@ public class MainActivity extends AppCompatActivity {
         JSONAsyncTask get = new JSONAsyncTask();
         try {
             result = get.execute(myurl).get();
-            System.out.println(result);
             JSONArray ja = new JSONArray(result);
             for (int i = 0; i < ja.length(); i++){
                 JSONObject j = (JSONObject) ja.get(i);
-                System.out.println(j.getString("name"));
+                String name = j.getString("name");
+                int id = j.getInt("id");
+                System.out.println("id: " + id + " name: " + name);
             }
         } catch (ExecutionException e){
             e.printStackTrace();
