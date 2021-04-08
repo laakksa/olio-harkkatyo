@@ -1,9 +1,5 @@
 package com.juuh.ht;
 
-import android.os.ParcelFormatException;
-
-import androidx.versionedparcelable.VersionedParcel;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
