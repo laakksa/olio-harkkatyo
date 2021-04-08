@@ -1,6 +1,7 @@
 package com.juuh.ht;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Fragment frag = new LeaderBoardFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, frag).commit();
+
     }
 
     public void getTeams(View v){
@@ -39,5 +43,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e){
             e.printStackTrace();
         }
+
+
     }
 }
