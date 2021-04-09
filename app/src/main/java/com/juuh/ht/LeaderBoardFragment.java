@@ -81,7 +81,7 @@ public class LeaderBoardFragment extends Fragment {
         //Create leaderboard table layout and populate it with data
         for (int i = 0; i < entries.size(); i++) {
             TableRow row = new TableRow(getContext());
-            String name = entries.get(i).name;
+            String abbreviation = entries.get(i).abbreviation;
             int matches_played = entries.get(i).matches_played;
             int wins = entries.get(i).wins;
             int ties = entries.get(i).ties;
@@ -89,7 +89,7 @@ public class LeaderBoardFragment extends Fragment {
             int points = entries.get(i).points;
 
             TextView tvName = new TextView(getContext());
-            tvName.setText(name);
+            tvName.setText(abbreviation);
             TextView tvMatchesPlayed = new TextView(getContext());
             tvMatchesPlayed.setText(String.valueOf(matches_played));
             TextView tvWins = new TextView(getContext());
