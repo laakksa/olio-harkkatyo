@@ -1,10 +1,14 @@
 package com.juuh.ht;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,32 +22,41 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Fragment frag = new LeaderBoardFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, frag).commit();
 
-    }
+        BottomNavigationView navBar = findViewById(R.id.bottom_navigation);
+        navBar.setOnNavigationItemSelectedListener(navListener);
 
-    public void getTeams(View v){
-        String myurl = "https://kyykka.com/api/teams/?format=json";
-        String result;
-        JSONAsyncTask get = new JSONAsyncTask();
-        try {
-            result = get.execute(myurl).get();
-            JSONArray ja = new JSONArray(result);
-            for (int i = 0; i < ja.length(); i++){
-                JSONObject j = (JSONObject) ja.get(i);
-                String name = j.getString("name");
-                int id = j.getInt("id");
-                System.out.println("id: " + id + " name: " + name);
-            }
-        } catch (ExecutionException e){
-            e.printStackTrace();
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        } catch (JSONException e){
-            e.printStackTrace();
+        if(savedInstanceState == null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.frag_container,
+                    new LeaderBoardFragment()).commit();
         }
 
-
     }
+
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment = null;
+            switch (item.getItemId()){
+                case R.id.nav_leaderboard:
+                    selectedFragment = new LeaderBoardFragment();
+                    break;
+                case R.id.nav_matches:
+                    break;
+                case R.id.nav_scorecard:
+                    break;
+                case R.id.nav_profile:
+                    break;
+            }
+            if (selectedFragment != null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.frag_container,
+                    selectedFragment).commit();
+            return true;
+            } else{
+                return false;
+            }
+        }
+    };
 }
