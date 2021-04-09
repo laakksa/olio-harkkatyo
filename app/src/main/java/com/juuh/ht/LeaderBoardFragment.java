@@ -17,6 +17,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.concurrent.ExecutionException;
 
 public class LeaderBoardFragment extends Fragment {
@@ -36,6 +38,8 @@ public class LeaderBoardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         EntryManager entryManager = EntryManager.getInstance();
+
+        //Get data from kyykkacom API
         String myurl = "https://kyykka.com/api/teams/?format=json";
         String result;
         JSONAsyncTask get = new JSONAsyncTask();
@@ -44,14 +48,16 @@ public class LeaderBoardFragment extends Fragment {
             JSONArray ja = new JSONArray(result);
             for (int i = 0; i < ja.length(); i++) {
                 JSONObject j = (JSONObject) ja.get(i);
-                String name = j.getString("abbreviation");
+                String abbreviation = j.getString("abbreviation");
+                String name = j.getString("name");
                 int id = j.getInt("id");
                 int wins = j.getInt("matches_won");
                 int losses = j.getInt("matches_lost");
                 int ties = j.getInt("matches_tie");
                 int matches_played = j.getInt("matches_played");
                 int points = j.getInt("points_total");
-                TeamEntry teamEntry = new TeamEntry(id, name, wins, losses, ties, matches_played, points);
+                TeamEntry teamEntry = new TeamEntry(id, name, wins, losses, ties, matches_played,
+                        points, abbreviation);
                 entryManager.addTeamEntry(teamEntry);
             }
         } catch (ExecutionException e) {
@@ -61,7 +67,18 @@ public class LeaderBoardFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        //Sort teams list by points in descending order
         ArrayList<TeamEntry> entries = entryManager.getTeamsList();
+        Collections.sort(entries, Collections.reverseOrder( new Comparator<TeamEntry>() {
+            @Override
+            public int compare(TeamEntry o1, TeamEntry o2) {
+                if (o1.points > o2.points) return 1;
+                if(o1.points < o2.points) return -1;
+                return 0;
+            }
+        }));
+
+        //Create leaderboard table layout and populate it with data
         for (int i = 0; i < entries.size(); i++) {
             TableRow row = new TableRow(getContext());
             String name = entries.get(i).name;
