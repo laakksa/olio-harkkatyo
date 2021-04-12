@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class LoginRegister extends AppCompatActivity {
 
     EditText username, password, repassword;
@@ -36,7 +39,7 @@ public class LoginRegister extends AppCompatActivity {
 
                 if(user.equals("")||pass.equals("")||repass.equals(""))
                     Toast.makeText(LoginRegister.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else{
+                else if (checkpasswordcriterias(pass)) {
                     if(pass.equals(repass)){
                         Boolean checkuser = DB.checkusername(user);
                         if(checkuser == false) {
@@ -56,6 +59,9 @@ public class LoginRegister extends AppCompatActivity {
                         Toast.makeText(LoginRegister.this, "Passwords not matching.", Toast.LENGTH_SHORT).show();
                     }
                 }
+                else{
+                    Toast.makeText(LoginRegister.this, "Passwords does not meet the criteria.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -70,4 +76,40 @@ public class LoginRegister extends AppCompatActivity {
         });
 
     }
+
+    public Boolean checkpasswordcriterias(String password) {
+        char ch;
+        boolean capitalFlag = false;
+        boolean lowerCaseFlag = false;
+        boolean numberFlag = false;
+        boolean flag = false;
+        Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
+        Matcher matcher = pattern.matcher(password);
+        boolean containsSpecialChar = matcher.find();
+        for(int i=0;i < password.length();i++) {
+            ch = password.charAt(i);
+            if(Character.isDigit(ch)) {
+                numberFlag = true;
+            }
+            else if (Character.isUpperCase(ch)) {
+                capitalFlag = true;
+            }
+            else if (Character.isLowerCase(ch)) {
+                lowerCaseFlag = true;
+            }
+            if(numberFlag && capitalFlag && lowerCaseFlag && containsSpecialChar)
+                flag = true;
+        }
+        if (password.length()>11) {
+            if (flag) {
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
+
 }

@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
 
     EditText username, password;
-    Button btnlogin;
+    Button btnlogin, btnsignup;
     DataBaseHelper DB;
 
     @Override
@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username1);
         password = (EditText) findViewById(R.id.password1);
         btnlogin = (Button) findViewById(R.id.btnsignin1);
+        btnsignup = (Button) findViewById(R.id.btnsignup1);
         DB = new DataBaseHelper(this);
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +45,16 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+
+        btnsignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), LoginRegister.class);
+                startActivity(intent);
+
             }
         });
 

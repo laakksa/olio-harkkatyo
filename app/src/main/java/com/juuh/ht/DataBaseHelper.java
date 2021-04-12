@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 //TODO: kommentointi tähän, lähde on https://www.youtube.com/watch?v=8obgNNlj3Eo
 
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -56,5 +59,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         else
             return false;
     }
+
 
 }
