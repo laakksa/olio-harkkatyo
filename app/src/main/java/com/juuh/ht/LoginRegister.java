@@ -1,14 +1,20 @@
 package com.juuh.ht;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,6 +37,7 @@ public class LoginRegister extends AppCompatActivity {
         DB = new DataBaseHelper(this);
 
         signup.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 String user = username.getText().toString();
@@ -43,7 +50,10 @@ public class LoginRegister extends AppCompatActivity {
                     if(pass.equals(repass)){
                         Boolean checkuser = DB.checkusername(user);
                         if(checkuser == false) {
-                            Boolean insert = DB.insertData(user, pass);
+                            byte[] salt = HashSalt.getSalt();
+                            String encryptedpassword = HashSalt.encrypt(pass, salt);
+                            String saltString = Base64.getEncoder().encodeToString(salt);
+                            Boolean insert = DB.insertData(user, encryptedpassword, saltString);
                             if(insert == true) {
                                 Toast.makeText(LoginRegister.this, "Registered succesfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);

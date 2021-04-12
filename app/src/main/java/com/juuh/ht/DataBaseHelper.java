@@ -23,7 +23,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
-        MyDB.execSQL("Create Table users(username TEXT primary key, password TEXT)");
+        MyDB.execSQL("Create Table users(username TEXT primary key, password TEXT, salt TEXT)");
     }
 
     @Override
@@ -31,11 +31,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         MyDB.execSQL("drop Table if exists users");
     }
 
-    public Boolean insertData(String username, String password) {
+    public Boolean insertData(String username, String password, String salt) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", username);
         contentValues.put("password", password);
+        contentValues.put("salt", salt);
         long result = MyDB.insert("users", null, contentValues);
         if (result == -1) return false;
         else
@@ -60,5 +61,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    public String getSalt(String username) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select salt from users where username = ?", new String[] {username});
+        if(cursor.getCount()>0) {
+            cursor.moveToFirst();
+            String salt = cursor.getString(0);
+            return salt;
+        } else {
+            return null;
+        }
+    }
 
 }
