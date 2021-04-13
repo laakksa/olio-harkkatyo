@@ -68,8 +68,7 @@ public class LoginRegister extends AppCompatActivity {
                     } else {
                         Toast.makeText(LoginRegister.this, "Passwords not matching.", Toast.LENGTH_SHORT).show();
                     }
-                }
-                else{
+                } else{
                     Toast.makeText(LoginRegister.this, "Passwords does not meet the criteria.", Toast.LENGTH_SHORT).show();
                 }
             }
