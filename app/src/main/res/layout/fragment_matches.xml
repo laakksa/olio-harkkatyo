@@ -7,12 +7,23 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/fragbutton"
+        android:id="@+id/weatherbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="weather"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/matchbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="match"
+        app:layout_constraintBottom_toTopOf="@+id/weatherbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

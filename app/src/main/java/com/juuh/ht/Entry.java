@@ -38,11 +38,14 @@ class TeamEntry extends Entry{
 class MatchEntry extends Entry{
     Date datetime;
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-    int away_score, home_score;
-    public MatchEntry(int id, int away_score, int home_score, String datetime){
+    Integer away_score, home_score;
+    int home_id, away_id;
+    public MatchEntry(int id, Integer away_score, Integer home_score, String datetime, int home_id, int away_id){
         super(id);
         this.away_score = away_score;
         this.home_score = home_score;
+        this.away_id = away_id;
+        this.home_id = home_id;
         try {
             this.datetime = format.parse(datetime);
         } catch (ParseException e){
