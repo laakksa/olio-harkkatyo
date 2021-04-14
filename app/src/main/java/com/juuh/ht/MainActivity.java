@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new LeaderBoardFragment();
                     break;
                 case R.id.nav_matches:
+                    selectedFragment = new MatchesFragment();
                     break;
                 case R.id.nav_scorecard:
                     break;
