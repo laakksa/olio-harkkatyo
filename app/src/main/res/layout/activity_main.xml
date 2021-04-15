@@ -21,5 +21,4 @@
         app:labelVisibilityMode="labeled"
         android:background="?android:attr/windowBackground"/>
 
-
 </RelativeLayout>
