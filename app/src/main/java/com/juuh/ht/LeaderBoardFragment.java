@@ -39,34 +39,7 @@ public class LeaderBoardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         EntryManager entryManager = EntryManager.getInstance();
 
-        //Get data from kyykkacom API
-        String myurl = "https://kyykka.com/api/teams/?format=json";
-        String result;
-        JSONAsyncTask get = new JSONAsyncTask();
-        try {
-            result = get.execute(myurl).get();
-            JSONArray ja = new JSONArray(result);
-            for (int i = 0; i < ja.length(); i++) {
-                JSONObject j = (JSONObject) ja.get(i);
-                String abbreviation = j.getString("abbreviation");
-                String name = j.getString("name");
-                int id = j.getInt("id");
-                int wins = j.getInt("matches_won");
-                int losses = j.getInt("matches_lost");
-                int ties = j.getInt("matches_tie");
-                int matches_played = j.getInt("matches_played");
-                int points = j.getInt("points_total");
-                TeamEntry teamEntry = new TeamEntry(id, name, wins, losses, ties, matches_played,
-                        points, abbreviation);
-                entryManager.addTeamEntry(teamEntry);
-            }
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
         //Sort teams list by points in descending order
         ArrayList<TeamEntry> entries = entryManager.getTeamsList();
         Collections.sort(entries, Collections.reverseOrder( new Comparator<TeamEntry>() {
@@ -77,7 +50,11 @@ public class LeaderBoardFragment extends Fragment {
                 return 0;
             }
         }));
+        createTableLayout(entries);
 
+    }
+
+    private void createTableLayout(ArrayList<TeamEntry> entries){
         //Create leaderboard table layout and populate it with data
         for (int i = 0; i < entries.size(); i++) {
             TableRow row = new TableRow(getContext());
@@ -101,16 +78,16 @@ public class LeaderBoardFragment extends Fragment {
             TextView tvPoints = new TextView(getContext());
             tvPoints.setText(String.valueOf(points));
             tvName.setBackgroundResource(R.drawable.border);
-            tvName.setPadding(20, 0, 20, 0);
-            tvMatchesPlayed.setPadding(20, 0, 20, 0);
+            tvName.setPadding(20, 10, 20, 10);
+            tvMatchesPlayed.setPadding(20, 10, 20, 10);
             tvMatchesPlayed.setBackgroundResource(R.drawable.border);
-            tvWins.setPadding(20, 0, 20, 0);
+            tvWins.setPadding(20, 10, 20, 10);
             tvWins.setBackgroundResource(R.drawable.border);
-            tvTies.setPadding(20, 0, 20, 0);
+            tvTies.setPadding(20, 10, 20, 10);
             tvTies.setBackgroundResource(R.drawable.border);
-            tvLosses.setPadding(20, 0, 20, 0);
+            tvLosses.setPadding(20, 10, 20, 10);
             tvLosses.setBackgroundResource(R.drawable.border);
-            tvPoints.setPadding(20, 0, 20, 0);
+            tvPoints.setPadding(20, 10, 20, 10);
             tvPoints.setBackgroundResource(R.drawable.border);
             row.addView(tvName);
             row.addView(tvMatchesPlayed);
@@ -123,6 +100,5 @@ public class LeaderBoardFragment extends Fragment {
 
         }
     }
-
 
 }
