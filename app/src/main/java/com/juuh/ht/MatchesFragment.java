@@ -9,44 +9,32 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class MatchesFragment extends Fragment {
     View v;
     Button b, b2;
+    RecyclerView matchRecycler;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_matches, container, false);
-        b = v.findViewById(R.id.weatherbutton);
         EntryManager entryManager = EntryManager.getInstance();
-        b.setOnClickListener(new View.OnClickListener() {
+        matchRecycler = v.findViewById(R.id.matchesRecyclerView);
+        matchRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        MatchesAdapter adapter = new MatchesAdapter(getContext(), entryManager.getMatchesList());
+        adapter.setOnEntryClickListener(new MatchesAdapter.OnEntryClickListener() {
             @Override
-            public void onClick(View v) {
-                ArrayList<WeatherEntry> entries = entryManager.getWeather("2021-01-01T12:00:00Z", "2021-01-05T12:00:00");
-                for (WeatherEntry w : entries){
-                    System.out.println(w.getTime());
-                    System.out.println(w.getTemp());
-                    System.out.println("VÄLI");
-                }
+            public void onEntryClick(View view, int position) {
+                System.out.println("HELLO");
+                System.out.println("position: " + position);
+
             }
         });
-        b2 = v.findViewById(R.id.matchbutton);
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ArrayList<MatchEntry> matchEntries = entryManager.getMatchesList();
-                if (matchEntries == null){
-                    System.out.println("nullikkaa");
-                }
-                for (MatchEntry m : matchEntries){
-                    System.out.println("Home score: " + m.home_score);
-                    System.out.println("Away score: " + m.away_score);
-                    System.out.println("VÄLI");
-                }
-            }
-        });
+        matchRecycler.setAdapter(adapter);
         return v;
     }
 

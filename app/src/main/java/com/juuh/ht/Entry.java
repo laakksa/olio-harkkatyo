@@ -3,6 +3,7 @@ package com.juuh.ht;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Entry {
@@ -36,25 +37,25 @@ class TeamEntry extends Entry{
 }
 
 class MatchEntry extends Entry{
-    Date datetime;
-    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+    String home_abbr, away_abbr, datetime;
     Integer away_score, home_score;
     int home_id, away_id;
-    public MatchEntry(int id, Integer away_score, Integer home_score, String datetime, int home_id, int away_id){
+    public MatchEntry(int id, Integer away_score, Integer home_score, String datetime, int home_id,
+                      int away_id, String home_abbreviation, String away_abbreviation){
         super(id);
         this.away_score = away_score;
         this.home_score = home_score;
         this.away_id = away_id;
         this.home_id = home_id;
-        try {
-            this.datetime = format.parse(datetime);
-        } catch (ParseException e){
-            e.printStackTrace();
-            this.datetime = null;
-        }
+        this.home_abbr = home_abbreviation;
+        this.away_abbr = away_abbreviation;
+        this.datetime = datetime;
     }
-    public Date getDatetime(){
-        return this.datetime;
+    public String getDatetime(){
+        /*Calendar cal = Calendar.getInstance();
+        cal.setTime(datetime);
+        return cal;*/
+        return datetime;
     }
 }
 

@@ -116,8 +116,10 @@ public class EntryManager {
                 JSONObject away_team = j.getJSONObject("away_team");
                 int home_id = home_team.getInt("id");
                 int away_id = away_team.getInt("id");
+                String home_abbreviation = home_team.getString("abbreviation");
+                String away_abbreviation = away_team.getString("abbreviation");
                 MatchEntry matchEntry = new MatchEntry(id, away_score, home_score, datetime,
-                        home_id, away_id);
+                        home_id, away_id, home_abbreviation, away_abbreviation);
                 addMatchEntry(matchEntry);
             }
         } catch (ExecutionException e) {
