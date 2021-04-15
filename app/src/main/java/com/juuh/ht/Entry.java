@@ -14,16 +14,25 @@ public class Entry {
 
 
 class TeamEntry extends Entry{
-    String name;
+    String name, abbreviation;
+    int wins, losses, ties, matches_played, points;
     ArrayList<PlayerEntry> playerList;
-    public TeamEntry(int id, String name){
+    public TeamEntry(int id, String name, int wins, int losses, int ties, int matches_played,
+                     int points, String abbreviation){
         super(id);
         playerList = new ArrayList<PlayerEntry>();
         this.name = name;
+        this.wins = wins;
+        this.losses = losses;
+        this.ties = ties;
+        this.matches_played = matches_played;
+        this.points = points;
+        this.abbreviation = abbreviation;
     }
     public void addPlayer(PlayerEntry p){
         playerList.add(p);
     }
+
 }
 
 class MatchEntry extends Entry{
