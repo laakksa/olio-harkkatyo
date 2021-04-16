@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new MatchesFragment();
                     break;
                 case R.id.nav_scorecard:
-                    selectedFragment = new Scorecard_Fragment();
+                    selectedFragment = new Scorecard_fragment();
+                    break;
                 case R.id.nav_profile:
                     selectedFragment = new ProfileFragment();
                     break;
