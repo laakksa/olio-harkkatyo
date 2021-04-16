@@ -17,36 +17,42 @@
                 android:background="@drawable/border"
                 android:padding="5dp"
                 android:text="Team"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:background="@drawable/border"
                 android:padding="5dp"
                 android:text="M"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:background="@drawable/border"
                 android:padding="5dp"
                 android:text="W"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:background="@drawable/border"
                 android:padding="5dp"
                 android:text="T"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:background="@drawable/border"
                 android:padding="5dp"
                 android:text="L"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:background="@drawable/border"
                 android:padding="5dp"
                 android:text="P"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
 
