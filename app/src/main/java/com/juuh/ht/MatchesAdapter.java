@@ -33,14 +33,19 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
     public void onBindViewHolder(@NonNull MatchesViewHolder holder, int position) {
         MatchEntry match = matches.get(position);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat sdf3 = new SimpleDateFormat("HH:mm");
         String datestring = "null";
+        String timestring = "null";
         try {
             datestring = sdf2.format(sdf.parse(match.getDatetime()));
+            timestring = sdf3.format(sdf.parse(match.getDatetime()));
         } catch (ParseException e){
             e.printStackTrace();
         }
+        //Set up list item from matches ArrayList
         holder.date.setText(datestring);
+        holder.time.setText(timestring);
         holder.hometeam.setText(String.valueOf(match.home_abbr));
         holder.awayteam.setText(String.valueOf(match.away_abbr));
         holder.homescore.setText(String.valueOf(match.home_score));
@@ -53,17 +58,19 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
     }
 
     public class MatchesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView date, hometeam, awayteam, awayscore, homescore;
+        TextView date, hometeam, awayteam, awayscore, homescore, time;
         public MatchesViewHolder(@NonNull View itemView) {
             super(itemView);
+            //Set all fields for list items
             itemView.setOnClickListener(this);
+            time = itemView.findViewById(R.id.match_time_textview);
             date = itemView.findViewById(R.id.match_date_textView);
             hometeam = itemView.findViewById(R.id.home_team_textView);
             awayteam = itemView.findViewById(R.id.away_team_textview);
             awayscore = itemView.findViewById(R.id.away_score_textview);
             homescore = itemView.findViewById(R.id.home_score_textView);
     }
-
+    //Implement OnClickListener for list items
         @Override
         public void onClick(View v) {
             if (onEntryClickListener != null){

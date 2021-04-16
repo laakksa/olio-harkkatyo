@@ -15,12 +15,13 @@ public class EntryManager {
     private ArrayList<MatchEntry> matchesList;
     private static EntryManager em_instance = null;
     private EntryManager(){
+        //Initialize teamsList and matchesList and populate them with data from Kyykka.com API
         TeamsList = new ArrayList<TeamEntry>();
         matchesList = new ArrayList<MatchEntry>();
         getTeams();
         getMatches();
     }
-
+    //Singleton pattern for EntryManager
     public static EntryManager getInstance(){
         if (em_instance == null){
             em_instance = new EntryManager();
@@ -43,7 +44,7 @@ public class EntryManager {
 
 
     public void getTeams(){
-        //Get data from kyykkacom API
+        //Get team data from kyykkacom API and store it in TeamsList
         String myurl = "https://kyykka.com/api/teams/?format=json";
         String result;
         JSONAsyncTask get = new JSONAsyncTask();
@@ -73,7 +74,7 @@ public class EntryManager {
         }
     }
     public ArrayList<WeatherEntry> getWeather(String startdate, String enddate){
-        //Get weather info
+        //Get 10min temperature data between startdate and enddate
         ArrayList<WeatherEntry> entries = null;
         String weatherUrl = "https://opendata.fmi.fi/wfs/fin?service=WFS&" +
                 "version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::" +
@@ -90,6 +91,7 @@ public class EntryManager {
         return entries;
     }
 
+    //Get match data from Kyykka.com API and store it in matchesList
     public void getMatches(){
         String matchUrl = "https://kyykka.com/api/matches/?format=json";
         String result;
