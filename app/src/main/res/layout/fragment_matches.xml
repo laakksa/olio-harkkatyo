@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/matchesControlBar"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:weightSum="10"
+        android:background="@drawable/border">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Date"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_weight="3"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Home - away"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Score"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"/>
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/matchesControlBar"
+        android:id="@+id/matchesRecyclerView"/>
+
+
+
+</RelativeLayout>

@@ -3,10 +3,9 @@ package com.juuh.ht;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,14 +29,15 @@ public class MainActivity extends AppCompatActivity {
         navBar.setOnNavigationItemSelectedListener(navListener);
 
         if(savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.frag_container,
+            getSupportFragmentManager().beginTransaction().setTransition(FragmentTransaction
+                    .TRANSIT_FRAGMENT_OPEN).replace(R.id.frag_container,
                     new LeaderBoardFragment()).commit();
         }
 
 
     }
 
-
+    //Set up bottom navigation bar
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -48,9 +48,10 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new LeaderBoardFragment();
                     break;
                 case R.id.nav_matches:
+                    selectedFragment = new MatchesFragment();
                     break;
                 case R.id.nav_scorecard:
-                    break;
+                    selectedFragment = new Scorecard_Fragment();
                 case R.id.nav_profile:
                     selectedFragment = new ProfileFragment();
                     break;
