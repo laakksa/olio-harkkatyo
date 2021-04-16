@@ -5,12 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GRAPH"
+        android:id="@+id/graphbutton"
+        android:layout_alignParentTop="true"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/matchesControlBar"
         android:orientation="horizontal"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/graphbutton"
         android:weightSum="10"
         android:background="@drawable/border">
         <TextView

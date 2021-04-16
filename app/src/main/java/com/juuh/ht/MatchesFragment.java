@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class MatchesFragment extends Fragment {
     View v;
-    Button b, b2;
+    Button b;
     RecyclerView matchRecycler;
     @Nullable
     @Override
@@ -48,6 +48,19 @@ public class MatchesFragment extends Fragment {
             }
         });
         matchRecycler.setAdapter(adapter);
+        b = v.findViewById(R.id.graphbutton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new GraphFragment();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frag_container, fragment);
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+            }
+        });
         return v;
     }
 
