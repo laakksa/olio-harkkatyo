@@ -1,0 +1,1729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <EditText
+            android:id="@+id/setAwayPlayer5"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view63"
+            app:layout_constraintEnd_toStartOf="@+id/view67"
+            app:layout_constraintTop_toBottomOf="@+id/view66" />
+
+        <EditText
+            android:id="@+id/awayPlayer5Throw1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view63"
+            app:layout_constraintEnd_toStartOf="@+id/view65"
+            app:layout_constraintStart_toEndOf="@+id/view67"
+            app:layout_constraintTop_toBottomOf="@+id/view66" />
+
+        <EditText
+            android:id="@+id/awayPlayer5Throw2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view63"
+            app:layout_constraintEnd_toStartOf="@+id/view62"
+            app:layout_constraintStart_toEndOf="@+id/view65"
+            app:layout_constraintTop_toBottomOf="@+id/view66" />
+
+        <EditText
+            android:id="@+id/awayPlayer5Throw3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view63"
+            app:layout_constraintEnd_toStartOf="@+id/view68"
+            app:layout_constraintStart_toEndOf="@+id/view62"
+            app:layout_constraintTop_toBottomOf="@+id/view66" />
+
+        <EditText
+            android:id="@+id/awayPlayer5Throw4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view63"
+            app:layout_constraintEnd_toStartOf="@+id/view64"
+            app:layout_constraintStart_toEndOf="@+id/view68"
+            app:layout_constraintTop_toBottomOf="@+id/view66" />
+
+        <EditText
+            android:id="@+id/setAwayPlayer6"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view69"
+            app:layout_constraintEnd_toStartOf="@+id/view67"
+            app:layout_constraintTop_toBottomOf="@+id/view63" />
+
+        <EditText
+            android:id="@+id/awayPlayer6Throw1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view69"
+            app:layout_constraintEnd_toStartOf="@+id/view65"
+            app:layout_constraintStart_toEndOf="@+id/view67"
+            app:layout_constraintTop_toBottomOf="@+id/view63" />
+
+        <EditText
+            android:id="@+id/awayPlayer6Throw2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view69"
+            app:layout_constraintEnd_toStartOf="@+id/view62"
+            app:layout_constraintStart_toEndOf="@+id/view65"
+            app:layout_constraintTop_toBottomOf="@+id/view63" />
+
+        <EditText
+            android:id="@+id/awayPlayer6Throw3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view69"
+            app:layout_constraintEnd_toStartOf="@+id/view68"
+            app:layout_constraintStart_toEndOf="@+id/view62"
+            app:layout_constraintTop_toBottomOf="@+id/view63" />
+
+        <EditText
+            android:id="@+id/awayPlayer6Throw4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view69"
+            app:layout_constraintEnd_toStartOf="@+id/view64"
+            app:layout_constraintStart_toEndOf="@+id/view68"
+            app:layout_constraintTop_toBottomOf="@+id/view63" />
+
+        <EditText
+            android:id="@+id/setAwayPlayer7"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view70"
+            app:layout_constraintEnd_toStartOf="@+id/view67"
+            app:layout_constraintTop_toBottomOf="@+id/view69" />
+
+        <EditText
+            android:id="@+id/awayPlayer7Throw1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view70"
+            app:layout_constraintEnd_toStartOf="@+id/view65"
+            app:layout_constraintStart_toEndOf="@+id/view67"
+            app:layout_constraintTop_toBottomOf="@+id/view69" />
+
+
+        <EditText
+            android:id="@+id/awayPlayer7Throw2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/view70"
+            app:layout_constraintEnd_toStartOf="@+id/view62"
+            app:layout_constraintStart_toEndOf="@+id/view65"
+            app:layout_constraintTop_toBottomOf="@+id/view69" />
+
+        <EditText
+            android:id="@+id/awayPlayer7Throw3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view70"
+            app:layout_constraintEnd_toStartOf="@+id/view68"
+            app:layout_constraintStart_toEndOf="@+id/view62"
+            app:layout_constraintTop_toBottomOf="@+id/view69" />
+
+        <EditText
+            android:id="@+id/awayPlayer7Throw4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view70"
+            app:layout_constraintEnd_toStartOf="@+id/view64"
+            app:layout_constraintStart_toEndOf="@+id/view68"
+            app:layout_constraintTop_toBottomOf="@+id/view69" />
+
+        <EditText
+            android:id="@+id/setAwayPlayer8"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view61"
+            app:layout_constraintEnd_toStartOf="@+id/view67"
+            app:layout_constraintTop_toBottomOf="@+id/view70" />
+
+        <EditText
+            android:id="@+id/awayPlayer8Throw1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view61"
+            app:layout_constraintEnd_toStartOf="@+id/view65"
+            app:layout_constraintStart_toEndOf="@+id/view67"
+            app:layout_constraintTop_toBottomOf="@+id/view70" />
+
+        <EditText
+            android:id="@+id/awayPlayer8Throw2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/view61"
+            app:layout_constraintEnd_toStartOf="@+id/view62"
+            app:layout_constraintStart_toEndOf="@+id/view65"
+            app:layout_constraintTop_toBottomOf="@+id/view70" />
+
+        <EditText
+            android:id="@+id/awayPlayer8Throw3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view61"
+            app:layout_constraintEnd_toStartOf="@+id/view68"
+            app:layout_constraintStart_toEndOf="@+id/view62"
+            app:layout_constraintTop_toBottomOf="@+id/view70" />
+
+        <EditText
+            android:id="@+id/awayPlayer8Throw4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view61"
+            app:layout_constraintEnd_toStartOf="@+id/view64"
+            app:layout_constraintStart_toEndOf="@+id/view68"
+            app:layout_constraintTop_toBottomOf="@+id/view70" />
+
+        <View
+            android:id="@+id/view61"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view70"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view63"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view66"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view64"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.735"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view66"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view65"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.437"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view66"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view66"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="34dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view21"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view67"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view66"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view68"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.638"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view66"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view69"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view63"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view70"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="29dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view69"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view62"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.534"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view66"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/awayPlayer1Throw1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view24"
+            app:layout_constraintEnd_toStartOf="@+id/view26"
+            app:layout_constraintStart_toEndOf="@+id/view28"
+            app:layout_constraintTop_toBottomOf="@+id/view27" />
+
+        <EditText
+            android:id="@+id/awayPlayer1Throw2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view24"
+            app:layout_constraintEnd_toStartOf="@+id/view23"
+            app:layout_constraintStart_toEndOf="@+id/view26"
+            app:layout_constraintTop_toBottomOf="@+id/view27" />
+
+        <EditText
+            android:id="@+id/awayPlayer1Throw3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view24"
+            app:layout_constraintEnd_toStartOf="@+id/view29"
+            app:layout_constraintStart_toEndOf="@+id/view23"
+            app:layout_constraintTop_toBottomOf="@+id/view27" />
+
+
+        <EditText
+            android:id="@+id/awayPlayer1Throw4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view24"
+            app:layout_constraintEnd_toStartOf="@+id/view25"
+            app:layout_constraintStart_toEndOf="@+id/view29"
+            app:layout_constraintTop_toBottomOf="@+id/view27" />
+
+
+        <EditText
+            android:id="@+id/awayPlayer2Throw1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/view30"
+            app:layout_constraintEnd_toStartOf="@+id/view26"
+            app:layout_constraintStart_toEndOf="@+id/view28"
+            app:layout_constraintTop_toBottomOf="@+id/view24" />
+
+        <EditText
+            android:id="@+id/awayPlayer2Throw2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view30"
+            app:layout_constraintEnd_toStartOf="@+id/view23"
+            app:layout_constraintStart_toEndOf="@+id/view26"
+            app:layout_constraintTop_toBottomOf="@+id/view24" />
+
+        <EditText
+            android:id="@+id/awayPlayer2Throw3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view30"
+            app:layout_constraintEnd_toStartOf="@+id/view29"
+            app:layout_constraintStart_toEndOf="@+id/view23"
+            app:layout_constraintTop_toBottomOf="@+id/view24" />
+
+        <EditText
+            android:id="@+id/awayPlayer2Throw4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view30"
+            app:layout_constraintEnd_toStartOf="@+id/view25"
+            app:layout_constraintStart_toEndOf="@+id/view29"
+            app:layout_constraintTop_toBottomOf="@+id/view24" />
+
+        <EditText
+            android:id="@+id/awayPlayer3Throw1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/view22"
+            app:layout_constraintEnd_toStartOf="@+id/view26"
+            app:layout_constraintStart_toEndOf="@+id/view28"
+            app:layout_constraintTop_toBottomOf="@+id/view30" />
+
+        <EditText
+            android:id="@+id/awayPlayer3Throw2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view22"
+            app:layout_constraintEnd_toStartOf="@+id/view23"
+            app:layout_constraintStart_toEndOf="@+id/view26"
+            app:layout_constraintTop_toBottomOf="@+id/view30" />
+
+        <EditText
+            android:id="@+id/awayPlayer3Throw3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view22"
+            app:layout_constraintEnd_toStartOf="@+id/view29"
+            app:layout_constraintStart_toEndOf="@+id/view23"
+            app:layout_constraintTop_toBottomOf="@+id/view30" />
+
+        <EditText
+            android:id="@+id/awayPlayer3Throw4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view22"
+            app:layout_constraintEnd_toStartOf="@+id/view25"
+            app:layout_constraintStart_toEndOf="@+id/view29"
+            app:layout_constraintTop_toBottomOf="@+id/view30" />
+
+
+        <EditText
+            android:id="@+id/awayPlayer4Throw1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/view21"
+            app:layout_constraintEnd_toStartOf="@+id/view26"
+            app:layout_constraintStart_toEndOf="@+id/view28"
+            app:layout_constraintTop_toBottomOf="@+id/view22" />
+
+        <EditText
+            android:id="@+id/awayPlayer4Throw2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view21"
+            app:layout_constraintEnd_toStartOf="@+id/view23"
+            app:layout_constraintStart_toEndOf="@+id/view26"
+            app:layout_constraintTop_toBottomOf="@+id/view22" />
+
+        <EditText
+            android:id="@+id/awayPlayer4Throw3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view21"
+            app:layout_constraintEnd_toStartOf="@+id/view29"
+            app:layout_constraintStart_toEndOf="@+id/view23"
+            app:layout_constraintTop_toBottomOf="@+id/view22" />
+
+        <EditText
+            android:id="@+id/awayPlayer4Throw4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view21"
+            app:layout_constraintEnd_toStartOf="@+id/view25"
+            app:layout_constraintStart_toEndOf="@+id/view29"
+            app:layout_constraintTop_toBottomOf="@+id/view22" />
+
+        <EditText
+            android:id="@+id/setAwayPlayer"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view24"
+            app:layout_constraintEnd_toStartOf="@+id/view28"
+            app:layout_constraintTop_toBottomOf="@+id/view27" />
+
+        <EditText
+            android:id="@+id/setAwayPlayer2"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view30"
+            app:layout_constraintEnd_toStartOf="@+id/view28"
+            app:layout_constraintTop_toBottomOf="@+id/view24" />
+
+        <EditText
+            android:id="@+id/setAwayPlayer3"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view22"
+            app:layout_constraintEnd_toStartOf="@+id/view28"
+            app:layout_constraintTop_toBottomOf="@+id/view30" />
+
+        <EditText
+            android:id="@+id/setAwayPlayer4"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view21"
+            app:layout_constraintEnd_toStartOf="@+id/view28"
+            app:layout_constraintTop_toBottomOf="@+id/view22" />
+
+        <View
+            android:id="@+id/view21"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="29dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view22"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view23"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.535"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view27"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view24"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view27"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view25"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.735"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view27"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view26"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.437"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view27"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view27"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="29dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view28"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view27"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view29"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.638"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view27"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view30"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view24"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view22"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view30"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="42dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/view7" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="52dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="50dp"
+            android:text="Away:"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.242"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view7" />
+
+        <EditText
+            android:id="@+id/setthirdPlayer2"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/view5"
+            app:layout_constraintEnd_toStartOf="@+id/view19"
+            app:layout_constraintTop_toBottomOf="@+id/view14"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="203dp" />
+
+        <EditText
+            android:id="@+id/setFourthPlayer2"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view7"
+            app:layout_constraintEnd_toStartOf="@+id/view19"
+            app:layout_constraintTop_toBottomOf="@+id/view5"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="234dp" />
+
+        <EditText
+            android:id="@+id/setfirstPlayer2"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view15"
+            app:layout_constraintEnd_toStartOf="@+id/view19"
+            app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+        <EditText
+            android:id="@+id/setsecondPlayer2"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view14"
+            app:layout_constraintEnd_toStartOf="@+id/view19"
+            app:layout_constraintTop_toBottomOf="@+id/view15" />
+
+        <EditText
+            android:id="@+id/player4Throw8"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view7"
+            app:layout_constraintEnd_toStartOf="@+id/view16"
+            app:layout_constraintStart_toEndOf="@+id/view20"
+            app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+        <EditText
+            android:id="@+id/player4Throw5"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view7"
+            app:layout_constraintEnd_toStartOf="@+id/view17"
+            app:layout_constraintStart_toEndOf="@+id/view19"
+            app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+        <EditText
+            android:id="@+id/player4Throw6"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view7"
+            app:layout_constraintEnd_toStartOf="@+id/view6"
+            app:layout_constraintStart_toEndOf="@+id/view17"
+            app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+        <EditText
+            android:id="@+id/player4Throw7"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="text"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view7"
+            app:layout_constraintEnd_toStartOf="@+id/view20"
+            app:layout_constraintStart_toEndOf="@+id/view6"
+            app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+        <EditText
+            android:id="@+id/player3Throw8"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/view5"
+            app:layout_constraintEnd_toStartOf="@+id/view16"
+            app:layout_constraintStart_toEndOf="@+id/view20"
+            app:layout_constraintTop_toBottomOf="@+id/view14" />
+
+        <EditText
+            android:id="@+id/player3Throw5"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/view5"
+            app:layout_constraintEnd_toStartOf="@+id/view17"
+            app:layout_constraintStart_toEndOf="@+id/view19"
+            app:layout_constraintTop_toBottomOf="@+id/view14" />
+
+        <EditText
+            android:id="@+id/player3Throw6"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view5"
+            app:layout_constraintEnd_toStartOf="@+id/view6"
+            app:layout_constraintStart_toEndOf="@+id/view17"
+            app:layout_constraintTop_toBottomOf="@+id/view14" />
+
+        <EditText
+            android:id="@+id/player3Throw7"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view5"
+            app:layout_constraintEnd_toStartOf="@+id/view20"
+            app:layout_constraintStart_toEndOf="@+id/view6"
+            app:layout_constraintTop_toBottomOf="@+id/view14" />
+
+        <EditText
+            android:id="@+id/player1Throw8"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view15"
+            app:layout_constraintEnd_toStartOf="@+id/view16"
+            app:layout_constraintStart_toEndOf="@+id/view20"
+            app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+        <EditText
+            android:id="@+id/player1Throw5"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view15"
+            app:layout_constraintEnd_toStartOf="@+id/view17"
+            app:layout_constraintStart_toEndOf="@+id/view19"
+            app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+        <EditText
+            android:id="@+id/player1Throw6"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view15"
+            app:layout_constraintEnd_toStartOf="@+id/view6"
+            app:layout_constraintStart_toEndOf="@+id/view17"
+            app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+        <EditText
+            android:id="@+id/player1Throw7"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view15"
+            app:layout_constraintEnd_toStartOf="@+id/view20"
+            app:layout_constraintStart_toEndOf="@+id/view6"
+            app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+        <EditText
+            android:id="@+id/player2Throw"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view14"
+            app:layout_constraintEnd_toStartOf="@+id/view16"
+            app:layout_constraintStart_toEndOf="@+id/view20"
+            app:layout_constraintTop_toBottomOf="@+id/view15" />
+
+        <EditText
+            android:id="@+id/player2Throw6"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view14"
+            app:layout_constraintEnd_toStartOf="@+id/view17"
+            app:layout_constraintStart_toEndOf="@+id/view19"
+            app:layout_constraintTop_toBottomOf="@+id/view15" />
+
+        <EditText
+            android:id="@+id/player2Throw7"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view14"
+            app:layout_constraintEnd_toStartOf="@+id/view6"
+            app:layout_constraintStart_toEndOf="@+id/view17"
+            app:layout_constraintTop_toBottomOf="@+id/view15" />
+
+        <EditText
+            android:id="@+id/player2Throw8"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view14"
+            app:layout_constraintEnd_toStartOf="@+id/view20"
+            app:layout_constraintStart_toEndOf="@+id/view6"
+            app:layout_constraintTop_toBottomOf="@+id/view15" />
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintTop_toBottomOf="@+id/view5"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="29dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintTop_toBottomOf="@+id/view14"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.535"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view18"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view15"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="29dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintTop_toBottomOf="@+id/view18"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/view16"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.735"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view18"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view17"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.437"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view18"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view18"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view8"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view19"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.334"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view18"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view20"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.638"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view18"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view14"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="27dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintTop_toBottomOf="@+id/view15"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="52dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="28dp"
+            android:text="Home:"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.242"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+
+        <TextView
+            android:id="@+id/homePlayerNames"
+            android:layout_width="52dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="4dp"
+            android:text="Player"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.097"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/homeFirst"
+            android:layout_width="15dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="4dp"
+            android:text="1."
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.373"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/homeSecond"
+            android:layout_width="15dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="4dp"
+            android:text="2."
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.477"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/homeThird"
+            android:layout_width="15dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="4dp"
+            android:text="3."
+            android:textSize="17dp"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.588"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/homeFourth"
+            android:layout_width="15dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="4dp"
+            android:text="4."
+            android:textSize="17dp"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.691"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/setthirdPlayer"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view4"
+            app:layout_constraintEnd_toStartOf="@+id/view11"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+        <EditText
+            android:id="@+id/setFourthPlayer"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view8"
+            app:layout_constraintEnd_toStartOf="@+id/view11"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <EditText
+            android:id="@+id/setfirstPlayer"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintEnd_toStartOf="@+id/view11"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <EditText
+            android:id="@+id/setsecondPlayer"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view3"
+            app:layout_constraintEnd_toStartOf="@+id/view11"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <EditText
+            android:id="@+id/player4Throw4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view8"
+            app:layout_constraintEnd_toStartOf="@+id/view13"
+            app:layout_constraintStart_toEndOf="@+id/view12"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <EditText
+            android:id="@+id/player4Throw3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view8"
+            app:layout_constraintEnd_toStartOf="@+id/view10"
+            app:layout_constraintStart_toEndOf="@+id/view9"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <EditText
+            android:id="@+id/player4Throw2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view8"
+            app:layout_constraintEnd_toStartOf="@+id/view12"
+            app:layout_constraintStart_toEndOf="@+id/view10"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <EditText
+            android:id="@+id/player4Throw1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="text"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view8"
+            app:layout_constraintEnd_toStartOf="@+id/view9"
+            app:layout_constraintStart_toEndOf="@+id/view11"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <EditText
+            android:id="@+id/player3Throw4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/view4"
+            app:layout_constraintEnd_toStartOf="@+id/view13"
+            app:layout_constraintStart_toEndOf="@+id/view12"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+        <EditText
+            android:id="@+id/player3Throw3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/view4"
+            app:layout_constraintEnd_toStartOf="@+id/view12"
+            app:layout_constraintStart_toEndOf="@+id/view10"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+        <EditText
+            android:id="@+id/player3Throw2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view4"
+            app:layout_constraintEnd_toStartOf="@+id/view10"
+            app:layout_constraintStart_toEndOf="@+id/view9"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+        <EditText
+            android:id="@+id/player3Throw1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view4"
+            app:layout_constraintEnd_toStartOf="@+id/view9"
+            app:layout_constraintStart_toEndOf="@+id/view11"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+        <EditText
+            android:id="@+id/player1Throw1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintEnd_toStartOf="@+id/view9"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/view11"
+            app:layout_constraintTop_toBottomOf="@+id/homeFirst"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/player1Throw2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintEnd_toStartOf="@+id/view10"
+            app:layout_constraintStart_toEndOf="@+id/view9"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <EditText
+            android:id="@+id/player1Throw3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="28dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintEnd_toStartOf="@+id/view12"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/view10"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintVertical_bias="0.85" />
+
+        <EditText
+            android:id="@+id/player1Throw4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="11dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintEnd_toStartOf="@+id/view13"
+            app:layout_constraintHorizontal_bias="0.923"
+            app:layout_constraintStart_toEndOf="@+id/view12"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <EditText
+            android:id="@+id/player2Throw5"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="1dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view3"
+            app:layout_constraintEnd_toStartOf="@+id/view9"
+            app:layout_constraintStart_toEndOf="@+id/view11"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <EditText
+            android:id="@+id/player2Throw2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="18dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view3"
+            app:layout_constraintEnd_toStartOf="@+id/view10"
+            app:layout_constraintStart_toEndOf="@+id/view9"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <EditText
+            android:id="@+id/player2Throw4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="18dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view3"
+            app:layout_constraintEnd_toStartOf="@+id/view13"
+            app:layout_constraintStart_toEndOf="@+id/view12"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <EditText
+            android:id="@+id/player2Throw3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/view3"
+            app:layout_constraintEnd_toStartOf="@+id/view12"
+            app:layout_constraintStart_toEndOf="@+id/view10"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/view10"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.535"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view8"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="29dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintTop_toBottomOf="@+id/view4"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/view13"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.735"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view9"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.437"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="56dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view11"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.334"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/view12"
+            android:layout_width="1.5dp"
+            android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.638"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.717"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view61" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="Read"
+            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view61" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

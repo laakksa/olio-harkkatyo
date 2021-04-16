@@ -3,8 +3,9 @@ package com.juuh.ht;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
                     new LeaderBoardFragment()).commit();
         }
 
+
     }
 
     //Set up bottom navigation bar
@@ -49,8 +51,9 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new MatchesFragment();
                     break;
                 case R.id.nav_scorecard:
-                    break;
+                    selectedFragment = new Scorecard_Fragment();
                 case R.id.nav_profile:
+                    selectedFragment = new ProfileFragment();
                     break;
             }
             if (selectedFragment != null){
