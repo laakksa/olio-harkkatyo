@@ -112,9 +112,10 @@ public class JSONWriteAndRead {
 
             if (json == null){
                 matches.add(new Match("0", "New Game", ""));
-                File root = new File("/data/user/0/com.juuh.ht/files/"+username+"/");
-                root.mkdir();
-
+                File root1 = new File("/data/user/0/com.juuh.ht/files/");
+                root1.mkdir();
+                File root2 = new File("/data/user/0/com.juuh.ht/files/"+username+"/");
+                root2.mkdir();
                 return matches;
             }
 
