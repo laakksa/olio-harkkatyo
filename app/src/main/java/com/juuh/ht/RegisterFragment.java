@@ -1,6 +1,8 @@
 package com.juuh.ht;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,12 +26,13 @@ public class RegisterFragment extends Fragment {
     EditText username, password, repassword;
     Button signup, signin;
     DataBaseHelper DB;
+    SharedPreferences preferences;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_register, container, false);
-
+        preferences = getContext().getSharedPreferences("settings", Context.MODE_PRIVATE);
         return v;
     }
 
@@ -73,6 +76,7 @@ public class RegisterFragment extends Fragment {
                     String saltString = Base64.getEncoder().encodeToString(salt);
                     Boolean insert = DB.insertData(user, encryptedpassword, saltString);
                     if(insert == true) {
+                        preferences.edit().putString("currentUser", user).commit();
                         if (getArguments().getString("selectedFragment").equals("Scorecard")) {
                             getFragmentManager().beginTransaction().replace(R.id.frag_container,
                                     new Scorecard_fragment()).commit();

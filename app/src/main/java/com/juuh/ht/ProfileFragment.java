@@ -1,6 +1,8 @@
 package com.juuh.ht;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -26,15 +28,16 @@ import java.util.regex.Pattern;
 //TODO: toastit, salasanan vaihto, logout, käyttäjänimi, tallennettujen pelien määrä ei toimi
 public class ProfileFragment extends Fragment {
     View v;
-    Button btnreset;
+    Button btnreset, btnlogout;
     EditText crnpassword, newpassword, newrepassword;
     String usrname = "ilmari"; //TODO tähän oikea muuttuja
+    SharedPreferences preferences;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_profile, container, false);
-
+        preferences = getContext().getSharedPreferences("settings", Context.MODE_PRIVATE);
         return v;
     }
 
@@ -87,6 +90,21 @@ public class ProfileFragment extends Fragment {
                 }
             }
         });
+
+        btnlogout = v.findViewById(R.id.logoutbtn);
+        btnlogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                preferences.edit().putString("currentUser", null).commit();
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("selectedFragment", "Profile");
+                Fragment fragment = new LoginFragment();
+                fragment.setArguments(bundle2);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frag_container, fragment).commit();
+            }
+        });
+
 
     }
 

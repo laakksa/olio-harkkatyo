@@ -2,6 +2,7 @@ package com.juuh.ht;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,11 +31,13 @@ public class LoginFragment extends Fragment {
     EditText username, password;
     Button btnlogin, btnsignup;
     DataBaseHelper DB;
+    SharedPreferences preferences;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_login, container, false);
+        preferences = getContext().getSharedPreferences("settings", Context.MODE_PRIVATE);
         return v;
     }
 
@@ -67,6 +70,7 @@ public class LoginFragment extends Fragment {
                         String encryptedpass = HashSalt.encrypt(pass, saltArray);
                         Boolean checkuserpass = DB.checkusernamepassword(user, encryptedpass);
                         if (checkuserpass == true) {
+                            preferences.edit().putString("currentUser", user).commit();
                             if (getArguments().getString("selectedFragment").equals("Scorecard")) {
                                 getFragmentManager().beginTransaction().replace(R.id.frag_container,
                                         new Scorecard_fragment()).commit();

@@ -103,7 +103,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/crnLayout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/currentpassword"
@@ -116,7 +117,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/newLayout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/newpassword"
@@ -129,7 +131,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/renewLayout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/newrepassword"
@@ -143,7 +146,13 @@
                     android:id="@+id/resetbtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Reset password"></Button>
+                    android:text="Reset password"/>
+
+                <Button
+                    android:id="@+id/logoutbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Logout"/>
 
             </LinearLayout>
 
