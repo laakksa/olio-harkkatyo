@@ -1,24 +1,28 @@
 package com.juuh.ht;
 
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+
 import java.util.ArrayList;
 
 public class Scorecard_fragment extends Fragment {
 
     JSONWriteAndRead jwr = new JSONWriteAndRead();
+    String ID = "-";
 
 
 
@@ -33,28 +37,71 @@ public class Scorecard_fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+
+        ArrayList<Match> matches = jwr.readIndex();
+        jwr.writefile0();
+
+
+
+        Spinner spinner = (Spinner) view.findViewById(R.id.spinner2);
+
+        ArrayAdapter<Match> adapter =
+                new ArrayAdapter<>(view.getContext(),  android.R.layout.simple_spinner_item, matches);
+        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(adapter);
+
+        for (int i = 0; i < matches.size(); i++) {
+            ID = matches.get(i).getId();}
+        ID += "1";
+
         Button button = (Button)view.findViewById(R.id.button2);
         Button button2 = (Button)view.findViewById(R.id.button);
 
-        button2.setOnClickListener(new View.OnClickListener() {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                readGame();
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Match match = (Match) spinner.getSelectedItem();
+
+
+                if (match.getId().equals("0")){
+                    readGame("0","","");
+                    for (int i = 0; i < matches.size(); i++) {
+                        ID = matches.get(i).getId();}
+                    ID += "1";
+                    System.out.println(ID);
+                    System.out.println("MatchID = 0");
+                    button.setOnClickListener(view1 -> saveGame(matches,ID));
+                }
+                else {
+                    readGame(match.getId(),match.getHomeTeam(),match.getAwayTeam());
+                    button.setOnClickListener(view12 -> saveGame(matches,match.getId()));
+                    button2.setOnClickListener(v -> {
+                        removeMatch(matches,match.getId());
+                        readGame("0","","");
+                    });
+                }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveGame();
-            }
-        });
+
 
         super.onViewCreated(view, savedInstanceState);
     }
 
+
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void saveGame() {
+    public void saveGame(ArrayList<Match> matches, String id) {
+
+        EditText homeTeam = getView().findViewById(R.id.editTextTextPersonName);
+        EditText awayTeam = getView().findViewById(R.id.editTextTextPersonName2);
 
         EditText homePlayer1 = getView().findViewById(R.id.setfirstPlayer);
 
@@ -194,20 +241,27 @@ public class Scorecard_fragment extends Fragment {
 
 
 
-
-        for (int i = 0; i < 16; i++) {
-            System.out.println((i + 1) + ". Name: " + th.get(i).getPlayer());
-
-
+        for (int i = 0; i < matches.size(); i++) {
+            if (id.equals(matches.get(i).getId())) {
+                matches.set(i,new Match(id,homeTeam.getText().toString(),awayTeam.getText().toString()));
+                jwr.writeIndex(matches);
+                jwr.write(th,id);
+                return;
+            }
         }
+        matches.add(new Match(id,homeTeam.getText().toString(),awayTeam.getText().toString()));
+        jwr.writeIndex(matches);
+        jwr.write(th,id);
 
-        Context context = getActivity();
 
-        jwr.write(context,th);
 
     }
 
-    public void readGame() {
+    public void readGame(String id, String homeTeam2, String awayTeam2) {
+
+        EditText homeTeam = getView().findViewById(R.id.editTextTextPersonName);
+        EditText awayTeam = getView().findViewById(R.id.editTextTextPersonName2);
+
         EditText homePlayer1 = getView().findViewById(R.id.setfirstPlayer);
 
         EditText homePlayer1Throw1 = getView().findViewById(R.id.player1Throw1);
@@ -321,7 +375,10 @@ public class Scorecard_fragment extends Fragment {
         EditText awayPlayer8Throw3 = getView().findViewById(R.id.awayPlayer8Throw3);
         EditText awayPlayer8Throw4 = getView().findViewById(R.id.awayPlayer8Throw4);
 
-        ArrayList<Throws> th = jwr.read();
+        ArrayList<Throws> th = jwr.read(id);
+
+        homeTeam.setText(homeTeam2);
+        awayTeam.setText(awayTeam2);
 
         homePlayer1.setText(th.get(0).getPlayer());
 
@@ -437,6 +494,19 @@ public class Scorecard_fragment extends Fragment {
         awayPlayer8Throw3.setText(th.get(15).getScoreThird());
         awayPlayer8Throw4.setText(th.get(15).getScoreFourth());
     }
+
+    public void removeMatch(ArrayList<Match> matches, String id){
+        for (int i = 0; i < matches.size(); i++) {
+            if (id.equals(matches.get(i).getId())) {
+                matches.remove(i);
+                jwr.writeIndex(matches);
+                jwr.fileDetele(id);
+                return;
+            }
+        }
+
+    }
+
 
 }
 
