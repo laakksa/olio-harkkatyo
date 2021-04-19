@@ -17,11 +17,13 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//TODO: mm toastien contextit ei toimi
+//TODO: toastit, salasanan vaihto, logout, käyttäjänimi, tallennettujen pelien määrä ei toimi
 public class ProfileFragment extends Fragment {
     View v;
     Button btnreset;
@@ -45,14 +47,22 @@ public class ProfileFragment extends Fragment {
         newrepassword = (EditText) view.findViewById(R.id.newrepassword);
         btnreset = (Button) view.findViewById(R.id.resetbtn);
         DataBaseHelper DB = new DataBaseHelper(getContext());
+        TextInputLayout crnLayout = (TextInputLayout) view.findViewById(R.id.crnLayout);
+        TextInputLayout newLayout = (TextInputLayout) view.findViewById(R.id.newLayout);
+        TextInputLayout renewLayout = (TextInputLayout) view.findViewById(R.id.renewLayout);
 
         btnreset.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                if(crnpassword.toString().equals("")||newpassword.toString().equals("")||newrepassword.toString().equals(""))
-                    Toast.makeText(getContext(), "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else if (checkpasswordcriterias(newpassword.toString())) {
+                if (crnpassword.getText().toString().equals("")) {
+                    crnLayout.setError("Please enter your current password");
+                } if (newpassword.equals("")) {
+                    newLayout.setError("Please enter your new password");
+                } if (newrepassword.equals("")) {
+                    renewLayout.setError("Please enter your new password again");
+                    //TODO: tästä eteenpäin pitää korjata jotta salasanan uusiminen toimii
+                } else if (checkpasswordcriterias(newpassword.toString())) {
                     if(newpassword.equals(newrepassword.toString())){
                         Boolean checkpass = DB.checkusernamepassword(usrname, crnpassword.toString());
                         if(checkpass == false) {
@@ -61,19 +71,19 @@ public class ProfileFragment extends Fragment {
                             String saltString = Base64.getEncoder().encodeToString(salt);
                             Boolean insert = DB.insertData(usrname, encryptedpassword, saltString);
                             if(insert == true) {
-                                Toast.makeText(getActivity(), "Password reseted.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Password reseted.", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getActivity(), "Reseting failed.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Reseting failed.", Toast.LENGTH_SHORT).show();
                             }
                         }
                         else {
-                            Toast.makeText(getActivity(), "Wrong current password.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Wrong current password.", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getActivity(), "Passwords not matching.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Passwords not matching.", Toast.LENGTH_SHORT).show();
                     }
                 } else{
-                    Toast.makeText(getActivity(), "Passwords does not meet the criteria.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Passwords does not meet the criteria.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
