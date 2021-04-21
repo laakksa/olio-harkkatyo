@@ -5,45 +5,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
+        android:id="@+id/matchesControlBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/matchesControlBar"
-        android:orientation="horizontal"
         android:layout_alignParentTop="true"
-        android:weightSum="10"
-        android:background="@drawable/border">
+        android:fitsSystemWindows="true"
+        android:background="@drawable/border"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
         <TextView
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
             android:text="Date"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:layout_weight="3"/>
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
             android:text="Home - away"
-            android:textStyle="bold"
             android:textSize="20sp"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"/>
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
-            android:text="Score"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_height="wrap_content"
-            android:layout_weight="3"/>
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="Score"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/matchesControlBar"
-        android:id="@+id/matchesRecyclerView"/>
+        android:layout_below="@id/matchesControlBar"
+        android:id="@+id/matchesRecyclerView"
+        android:layout_above="@id/graphbutton"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OPEN GRAPH VIEW"
+        android:id="@+id/graphbutton"
+        android:layout_alignParentBottom="true"/>
 
 
 
