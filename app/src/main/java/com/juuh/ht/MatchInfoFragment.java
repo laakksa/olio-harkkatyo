@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
-
+//TODO Lisää infoa tähän
 public class MatchInfoFragment extends Fragment {
     View v;
     TextView textView, score, teams;

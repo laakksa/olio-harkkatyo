@@ -20,11 +20,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.concurrent.ExecutionException;
-
 public class LeaderBoardFragment extends Fragment {
     View v;
     TableLayout table;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,6 +56,7 @@ public class LeaderBoardFragment extends Fragment {
         //Create leaderboard table layout and populate it with data
         for (int i = 0; i < entries.size(); i++) {
             TableRow row = new TableRow(getContext());
+            String position = i + 1 + ".";
             String abbreviation = entries.get(i).abbreviation;
             int matches_played = entries.get(i).matches_played;
             int wins = entries.get(i).wins;
@@ -65,6 +64,9 @@ public class LeaderBoardFragment extends Fragment {
             int losses = entries.get(i).losses;
             int points = entries.get(i).points;
 
+
+            TextView tvPosition = new TextView(getContext());
+            tvPosition.setText(position);
             TextView tvName = new TextView(getContext());
             tvName.setText(abbreviation);
             TextView tvMatchesPlayed = new TextView(getContext());
@@ -77,6 +79,8 @@ public class LeaderBoardFragment extends Fragment {
             tvLosses.setText(String.valueOf(losses));
             TextView tvPoints = new TextView(getContext());
             tvPoints.setText(String.valueOf(points));
+            tvPosition.setBackgroundResource(R.drawable.border);
+            tvPosition.setPadding(20, 10, 20, 10);
             tvName.setBackgroundResource(R.drawable.border);
             tvName.setPadding(20, 10, 20, 10);
             tvMatchesPlayed.setPadding(20, 10, 20, 10);
@@ -89,13 +93,23 @@ public class LeaderBoardFragment extends Fragment {
             tvLosses.setBackgroundResource(R.drawable.border);
             tvPoints.setPadding(20, 10, 20, 10);
             tvPoints.setBackgroundResource(R.drawable.border);
+            row.setWeightSum(100);
+            tvPosition.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 10f));
+            row.addView(tvPosition);
+            tvName.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 50f));
             row.addView(tvName);
+            tvMatchesPlayed.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 8f));
             row.addView(tvMatchesPlayed);
+            tvWins.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 8f));
             row.addView(tvWins);
+            tvTies.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 8f));
             row.addView(tvTies);
+            tvLosses.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 8f));
             row.addView(tvLosses);
+            tvPoints.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 8f));
             row.addView(tvPoints);
             table.addView(row);
+
 
 
         }
