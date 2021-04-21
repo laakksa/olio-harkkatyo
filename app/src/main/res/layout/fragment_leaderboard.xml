@@ -11,7 +11,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tableHeader"
-            android:weightSum="100">
+            android:weightSum="100"
+            android:elevation="4dp">
             <TextView
                 android:id="@+id/header_position"
                 android:background="@drawable/border"

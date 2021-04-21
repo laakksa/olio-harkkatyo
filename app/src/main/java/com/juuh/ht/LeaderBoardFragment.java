@@ -64,7 +64,7 @@ public class LeaderBoardFragment extends Fragment {
             int losses = entries.get(i).losses;
             int points = entries.get(i).points;
 
-
+            //Create textviews for cells in table and add them to row, then add row to tablelayout
             TextView tvPosition = new TextView(getContext());
             tvPosition.setText(position);
             TextView tvName = new TextView(getContext());
@@ -81,32 +81,46 @@ public class LeaderBoardFragment extends Fragment {
             tvPoints.setText(String.valueOf(points));
             tvPosition.setBackgroundResource(R.drawable.border);
             tvPosition.setPadding(20, 10, 20, 10);
+            tvPosition.setTextSize(15);
             tvName.setBackgroundResource(R.drawable.border);
             tvName.setPadding(20, 10, 20, 10);
+            tvName.setTextSize(15);
             tvMatchesPlayed.setPadding(20, 10, 20, 10);
             tvMatchesPlayed.setBackgroundResource(R.drawable.border);
+            tvMatchesPlayed.setTextSize(15);
             tvWins.setPadding(20, 10, 20, 10);
             tvWins.setBackgroundResource(R.drawable.border);
+            tvWins.setTextSize(15);
             tvTies.setPadding(20, 10, 20, 10);
             tvTies.setBackgroundResource(R.drawable.border);
+            tvTies.setTextSize(15);
             tvLosses.setPadding(20, 10, 20, 10);
             tvLosses.setBackgroundResource(R.drawable.border);
+            tvLosses.setTextSize(15);
             tvPoints.setPadding(20, 10, 20, 10);
             tvPoints.setBackgroundResource(R.drawable.border);
+            tvPoints.setTextSize(15);
             row.setWeightSum(100);
-            tvPosition.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 10f));
+            tvPosition.setLayoutParams( new TableRow.LayoutParams(0,
+                    TableRow.LayoutParams.WRAP_CONTENT, 10f));
             row.addView(tvPosition);
-            tvName.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 50f));
+            tvName.setLayoutParams( new TableRow.LayoutParams(0,
+                    TableRow.LayoutParams.WRAP_CONTENT, 50f));
             row.addView(tvName);
-            tvMatchesPlayed.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 8f));
+            tvMatchesPlayed.setLayoutParams( new TableRow.LayoutParams(0,
+                    TableRow.LayoutParams.WRAP_CONTENT, 8f));
             row.addView(tvMatchesPlayed);
-            tvWins.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 8f));
+            tvWins.setLayoutParams( new TableRow.LayoutParams(0,
+                    TableRow.LayoutParams.WRAP_CONTENT, 8f));
             row.addView(tvWins);
-            tvTies.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 8f));
+            tvTies.setLayoutParams( new TableRow.LayoutParams(0,
+                    TableRow.LayoutParams.WRAP_CONTENT, 8f));
             row.addView(tvTies);
-            tvLosses.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 8f));
+            tvLosses.setLayoutParams( new TableRow.LayoutParams(0,
+                    TableRow.LayoutParams.WRAP_CONTENT, 8f));
             row.addView(tvLosses);
-            tvPoints.setLayoutParams( new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 8f));
+            tvPoints.setLayoutParams( new TableRow.LayoutParams(0,
+                    TableRow.LayoutParams.WRAP_CONTENT, 8f));
             row.addView(tvPoints);
             table.addView(row);
 

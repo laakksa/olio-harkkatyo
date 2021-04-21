@@ -50,20 +50,22 @@ public class EntryManager {
         JSONAsyncTask get = new JSONAsyncTask();
         try {
             result = get.execute(myurl).get();
-            JSONArray ja = new JSONArray(result);
-            for (int i = 0; i < ja.length(); i++) {
-                JSONObject j = (JSONObject) ja.get(i);
-                String abbreviation = j.getString("abbreviation");
-                String name = j.getString("name");
-                int id = j.getInt("id");
-                int wins = j.getInt("matches_won");
-                int losses = j.getInt("matches_lost");
-                int ties = j.getInt("matches_tie");
-                int matches_played = j.getInt("matches_played");
-                int points = j.getInt("points_total");
-                TeamEntry teamEntry = new TeamEntry(id, name, wins, losses, ties, matches_played,
-                        points, abbreviation);
-                addTeamEntry(teamEntry);
+            if (!(result == null)) {
+                JSONArray ja = new JSONArray(result);
+                for (int i = 0; i < ja.length(); i++) {
+                    JSONObject j = (JSONObject) ja.get(i);
+                    String abbreviation = j.getString("abbreviation");
+                    String name = j.getString("name");
+                    int id = j.getInt("id");
+                    int wins = j.getInt("matches_won");
+                    int losses = j.getInt("matches_lost");
+                    int ties = j.getInt("matches_tie");
+                    int matches_played = j.getInt("matches_played");
+                    int points = j.getInt("points_total");
+                    TeamEntry teamEntry = new TeamEntry(id, name, wins, losses, ties, matches_played,
+                            points, abbreviation);
+                    addTeamEntry(teamEntry);
+                }
             }
         } catch (ExecutionException e) {
             e.printStackTrace();
@@ -79,7 +81,7 @@ public class EntryManager {
         String weatherUrl = "https://opendata.fmi.fi/wfs/fin?service=WFS&" +
                 "version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::" +
                 "timevaluepair&place=Lappeenranta&parameters=t2m&starttime=" +
-                startdate + "&endtime=" + enddate + "&";
+                startdate + "&endtime=" + enddate + "&timestep=30&";
         XMLAsyncTask xmltask = new XMLAsyncTask();
         try {
             entries = xmltask.execute(weatherUrl).get();
@@ -98,31 +100,33 @@ public class EntryManager {
         JSONAsyncTask get = new JSONAsyncTask();
         try {
             result = get.execute(matchUrl).get();
-            Integer home_score, away_score;
-            JSONArray ja = new JSONArray(result);
-            for (int i = 0; i < ja.length(); i++) {
-                JSONObject j = (JSONObject) ja.get(i);
-                String datetime = j.getString("match_time");
-                int id = j.getInt("id");
-                if (!j.isNull("home_score_total")){
-                home_score = j.getInt("home_score_total");
-                } else {
-                    home_score = null;
+            if (!(result == null)) {
+                Integer home_score, away_score;
+                JSONArray ja = new JSONArray(result);
+                for (int i = 0; i < ja.length(); i++) {
+                    JSONObject j = (JSONObject) ja.get(i);
+                    String datetime = j.getString("match_time");
+                    int id = j.getInt("id");
+                    if (!j.isNull("home_score_total")) {
+                        home_score = j.getInt("home_score_total");
+                    } else {
+                        home_score = null;
+                    }
+                    if (!j.isNull("away_score_total")) {
+                        away_score = j.getInt("away_score_total");
+                    } else {
+                        away_score = null;
+                    }
+                    JSONObject home_team = j.getJSONObject("home_team");
+                    JSONObject away_team = j.getJSONObject("away_team");
+                    int home_id = home_team.getInt("id");
+                    int away_id = away_team.getInt("id");
+                    String home_abbreviation = home_team.getString("abbreviation");
+                    String away_abbreviation = away_team.getString("abbreviation");
+                    MatchEntry matchEntry = new MatchEntry(id, away_score, home_score, datetime,
+                            home_id, away_id, home_abbreviation, away_abbreviation);
+                    addMatchEntry(matchEntry);
                 }
-                if (!j.isNull("away_score_total")){
-                    away_score = j.getInt("away_score_total");
-                } else{
-                    away_score = null;
-                }
-                JSONObject home_team = j.getJSONObject("home_team");
-                JSONObject away_team = j.getJSONObject("away_team");
-                int home_id = home_team.getInt("id");
-                int away_id = away_team.getInt("id");
-                String home_abbreviation = home_team.getString("abbreviation");
-                String away_abbreviation = away_team.getString("abbreviation");
-                MatchEntry matchEntry = new MatchEntry(id, away_score, home_score, datetime,
-                        home_id, away_id, home_abbreviation, away_abbreviation);
-                addMatchEntry(matchEntry);
             }
         } catch (ExecutionException e) {
             e.printStackTrace();

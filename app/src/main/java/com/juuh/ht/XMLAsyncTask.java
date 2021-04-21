@@ -11,6 +11,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -38,30 +39,32 @@ public class XMLAsyncTask extends AsyncTask<String, Void, ArrayList<WeatherEntry
             connection.setReadTimeout(15000);
             connection.setConnectTimeout(15000);
             connection.connect();
-            InputStream inputStream = connection.getInputStream();
-            parser = XmlPullParserFactory.newInstance().newPullParser();
-            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-            parser.setInput(inputStream, "UTF-8");
-            int eventType = parser.getEventType();
-            WeatherEntry currentEntry = null;
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                String elementName;
-                switch (eventType) {
-                    case XmlPullParser.START_TAG:
-                        elementName = parser.getName();
-                        if (elementName.equals("wml2:MeasurementTVP")) {
-                            currentEntry = new WeatherEntry();
-                            weatherList.add(currentEntry);
-                        } else if (currentEntry != null) {
-                            if (elementName.equals("wml2:time")) {
-                                currentEntry.setTime(parser.nextText());
-                            } else if (elementName.equals("wml2:value")) {
-                                currentEntry.setTemp(Float.parseFloat(parser.nextText()));
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                InputStream inputStream = connection.getInputStream();
+                parser = XmlPullParserFactory.newInstance().newPullParser();
+                parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+                parser.setInput(inputStream, "UTF-8");
+                int eventType = parser.getEventType();
+                WeatherEntry currentEntry = null;
+                while (eventType != XmlPullParser.END_DOCUMENT) {
+                    String elementName;
+                    switch (eventType) {
+                        case XmlPullParser.START_TAG:
+                            elementName = parser.getName();
+                            if (elementName.equals("wml2:MeasurementTVP")) {
+                                currentEntry = new WeatherEntry();
+                                weatherList.add(currentEntry);
+                            } else if (currentEntry != null) {
+                                if (elementName.equals("wml2:time")) {
+                                    currentEntry.setTime(parser.nextText());
+                                } else if (elementName.equals("wml2:value")) {
+                                    currentEntry.setTemp(Float.parseFloat(parser.nextText()));
+                                }
                             }
-                        }
-                        break;
+                            break;
+                    }
+                    eventType = parser.next();
                 }
-                eventType = parser.next();
             }
         } catch (IOException e){
             e.printStackTrace();
