@@ -21,7 +21,10 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.ScatterData;
 import com.github.mikephil.charting.data.ScatterDataSet;
+import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.EntryXComparator;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -41,7 +44,8 @@ public class GraphFragment extends Fragment {
     TeamEntry selectedTeam;
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_graph, container, false);
         chart = v.findViewById(R.id.graph);
         spinner = v.findViewById(R.id.graph_spinner);
@@ -52,6 +56,8 @@ public class GraphFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //Create spinner from all teams and update graph when team selected
         ArrayList<TeamEntry> teamEntries = entryManager.getTeamsList();
         ArrayList<String> teamNames = new ArrayList<>();
         for (TeamEntry t : teamEntries){
@@ -84,20 +90,27 @@ public class GraphFragment extends Fragment {
         String startdate = matches.get(0).getDatetime();
         String enddate = matches.get(matches.size()-1).getDatetime();
         ArrayList<Entry> entries = new ArrayList<>();
-        LocalDateTime dateTimeStart = LocalDateTime.parse(startdate, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
-        LocalDateTime dateTimeEnd = LocalDateTime.parse(enddate, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        LocalDateTime dateTimeStart = LocalDateTime.parse(startdate,
+                DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        LocalDateTime dateTimeEnd = LocalDateTime.parse(enddate,
+                DateTimeFormatter.ISO_OFFSET_DATE_TIME);
         long weeks = Duration.between(dateTimeStart, dateTimeEnd).toDays() / 6;
         String end = null;
+        //Get data from fmi in one week size blocks due to API restrictions
         for (int i = 0; i < weeks + 1; i++){
-            String start = dateTimeStart.plusDays(i*6).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "Z";
-            end = dateTimeStart.plusDays((i+1)*6).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "Z";
+            String start = dateTimeStart.plusDays(i*6)
+                    .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "Z";
+            end = dateTimeStart.plusDays((i+1)*6)
+                    .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "Z";
             ArrayList<WeatherEntry> weatherEntries = entryManager.getWeather(start, end);
-            System.out.println("weather " + weatherEntries.size());
+            //Add selected teams scores and temperatures of games to chart entries list
             for (MatchEntry match : matches) {
                 System.out.println(selectedTeamid);
                 if (match.away_id == selectedTeamid) {
-                    LocalDateTime matchDate = LocalDateTime.parse(match.getDatetime(), DateTimeFormatter.ISO_OFFSET_DATE_TIME);
-                    String matchDatestring = matchDate.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "Z";
+                    LocalDateTime matchDate = LocalDateTime.parse(match.getDatetime(),
+                            DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+                    String matchDatestring = matchDate.format(DateTimeFormatter
+                            .ISO_LOCAL_DATE_TIME) + "Z";
                     if (!(match.away_score == null || match.home_score == null)) {
                         float away_score = Float.parseFloat(String.valueOf(match.away_score));
                         for (WeatherEntry w : weatherEntries) {
@@ -107,8 +120,10 @@ public class GraphFragment extends Fragment {
                         }
                     }
                 } else if (match.home_id == selectedTeamid){
-                    LocalDateTime matchDate = LocalDateTime.parse(match.getDatetime(), DateTimeFormatter.ISO_OFFSET_DATE_TIME);
-                    String matchDatestring = matchDate.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "Z";
+                    LocalDateTime matchDate = LocalDateTime.parse(match.getDatetime(),
+                            DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+                    String matchDatestring = matchDate.format(DateTimeFormatter
+                            .ISO_LOCAL_DATE_TIME) + "Z";
                     if (!(match.away_score == null || match.home_score == null)) {
                         float home_score = Float.parseFloat(String.valueOf(match.home_score));
                         for (WeatherEntry w : weatherEntries) {
@@ -120,17 +135,24 @@ public class GraphFragment extends Fragment {
                 }
             }
         }
+
+        //Create chart from data parsed above
         Collections.sort(entries, new EntryXComparator());
         ScatterDataSet dataSet = new ScatterDataSet(entries, "Score");
         dataSet.setColor(R.color.design_default_color_primary);
         dataSet.setValueTextSize(15);
         dataSet.setScatterShape(ScatterChart.ScatterShape.CIRCLE);
         dataSet.setScatterShapeSize(20);
+        dataSet.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return "" + ((int) value);
+            }
+        });
         ScatterData lineData = new ScatterData(dataSet);
         chart.setData(lineData);
         chart.setPinchZoom(true);
         chart.getDescription().setEnabled(false);
         chart.invalidate();
-        System.out.println(entries.size());
     }
 }

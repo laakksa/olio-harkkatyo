@@ -45,7 +45,7 @@ public class EntryManager {
 
     public void getTeams(){
         //Get team data from kyykkacom API and store it in TeamsList
-        String myurl = "https://kyykka.com/api/teams/?format=json&season=1";
+        String myurl = "https://kyykka.com/api/teams/?format=json&season=2";
         String result;
         JSONAsyncTask get = new JSONAsyncTask();
         try {
@@ -95,7 +95,7 @@ public class EntryManager {
 
     //Get match data from Kyykka.com API and store it in matchesList
     public void getMatches(){
-        String matchUrl = "https://kyykka.com/api/matches/?format=json&season=1";
+        String matchUrl = "https://kyykka.com/api/matches/?format=json&season=2";
         String result;
         JSONAsyncTask get = new JSONAsyncTask();
         try {

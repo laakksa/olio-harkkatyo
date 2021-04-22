@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,7 +39,7 @@ public class ProfileFragment extends Fragment {
     TextView userTextView, savedTextView;
     EditText crnpassword, newpassword, newrepassword;
     String usrname;
-    Integer savedScorecards = 0;
+    Integer savedScorecards = -1;
     SharedPreferences preferences;
 
     @Nullable
@@ -65,7 +66,7 @@ public class ProfileFragment extends Fragment {
         userTextView = (TextView) view.findViewById(R.id.usernameBox);
         userTextView.setText("Your username: \n" + usrname);
         savedTextView = (TextView) view.findViewById(R.id.playedgames);
-        savedTextView.setText(savedScorecards);
+        savedTextView.setText(String.valueOf(savedScorecards));
         crnpassword = (EditText) view.findViewById(R.id.currentpassword);
         newpassword = (EditText) view.findViewById(R.id.newpassword);
         newrepassword = (EditText) view.findViewById(R.id.newrepassword);
