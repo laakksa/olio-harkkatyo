@@ -11,12 +11,16 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -25,19 +29,25 @@ import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//TODO: toastit, salasanan vaihto, logout, käyttäjänimi, tallennettujen pelien määrä ei toimi
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
+
 public class ProfileFragment extends Fragment {
     View v;
     Button btnreset, btnlogout;
+    TextView userTextView, savedTextView;
     EditText crnpassword, newpassword, newrepassword;
-    String usrname = "ilmari"; //TODO tähän oikea muuttuja
+    String usrname;
+    Integer savedScorecards = 0;
     SharedPreferences preferences;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_profile, container, false);
         preferences = getContext().getSharedPreferences("settings", Context.MODE_PRIVATE);
+        usrname = preferences.getString("currentUser", null);
         return v;
     }
 
@@ -45,6 +55,17 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        JSONWriteAndRead jwr = JSONWriteAndRead.getInstance();
+        ArrayList<Match> matches = jwr.readIndex(usrname);
+        for (int i = 0; i < matches.size(); i++) {
+            savedScorecards++;
+        }
+
+        userTextView = (TextView) view.findViewById(R.id.usernameBox);
+        userTextView.setText("Your username: \n" + usrname);
+        savedTextView = (TextView) view.findViewById(R.id.playedgames);
+        savedTextView.setText(savedScorecards);
         crnpassword = (EditText) view.findViewById(R.id.currentpassword);
         newpassword = (EditText) view.findViewById(R.id.newpassword);
         newrepassword = (EditText) view.findViewById(R.id.newrepassword);
@@ -58,36 +79,56 @@ public class ProfileFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
+                //käydään läpi onko kentätä tyhjiä vai ei
                 if (crnpassword.getText().toString().equals("")) {
                     crnLayout.setError("Please enter your current password");
-                } if (newpassword.equals("")) {
-                    newLayout.setError("Please enter your new password");
-                } if (newrepassword.equals("")) {
-                    renewLayout.setError("Please enter your new password again");
-                    //TODO: tästä eteenpäin pitää korjata jotta salasanan uusiminen toimii
-                } else if (checkpasswordcriterias(newpassword.toString())) {
-                    if(newpassword.equals(newrepassword.toString())){
-                        Boolean checkpass = DB.checkusernamepassword(usrname, crnpassword.toString());
-                        if(checkpass == false) {
-                            byte[] salt = HashSalt.getSalt();
-                            String encryptedpassword = HashSalt.encrypt(newpassword.toString(), salt);
-                            String saltString = Base64.getEncoder().encodeToString(salt);
-                            Boolean insert = DB.insertData(usrname, encryptedpassword, saltString);
-                            if(insert == true) {
-                                Toast.makeText(getContext(), "Password reseted.", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getContext(), "Reseting failed.", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        else {
-                            Toast.makeText(getContext(), "Wrong current password.", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(getContext(), "Passwords not matching.", Toast.LENGTH_SHORT).show();
-                    }
-                } else{
-                    Toast.makeText(getContext(), "Passwords does not meet the criteria.", Toast.LENGTH_SHORT).show();
+                } else {
+                    crnLayout.setError(null);
                 }
+                if (newpassword.getText().toString().equals("")) {
+                    newLayout.setError("Please enter your new password");
+                } else {
+                    newLayout.setError(null);
+                }
+                if (newrepassword.getText().toString().equals("")) {
+                    renewLayout.setError("Please enter your new password again");
+                } else {
+                    renewLayout.setError(null);
+                }
+                //tarkistetaan vanha salasana ja uusi salasana
+                String salt = DB.getSalt(usrname);
+                byte[] saltArray = Base64.getDecoder().decode(salt);
+                String encryptedpass = HashSalt.encrypt(crnpassword.getText().toString(),
+                        saltArray);
+                Boolean checkuserpassword = DB.checkusernamepassword(usrname, encryptedpass);
+                if (checkuserpassword) {
+                    crnLayout.setError(null);
+                    if (checkpasswordcriterias(newpassword.getText().toString())) {
+                        newLayout.setError(null);
+                        if(newpassword.getText().toString().equals(newrepassword.getText().
+                                toString())){
+                            byte[] saltNew = HashSalt.getSalt();
+                            String encryptedpassword = HashSalt.encrypt(newpassword.getText().
+                                    toString(), saltNew);
+                            String saltString = Base64.getEncoder().encodeToString(saltNew);
+                            DB.deleteData(usrname);
+                            Boolean insert = DB.insertData(usrname, encryptedpassword, saltString);
+                            if(insert) {
+                                getFragmentManager().beginTransaction().replace(R.id.frag_container,
+                                        new ProfileFragment()).commit();
+                            } else {
+                                crnLayout.setError("Something went wrong. Password not reseted.");
+                            }
+                        } else {
+                            renewLayout.setError("Passwords not matching.");
+                        }
+                    } else{
+                        newLayout.setError("Passwords does not meet the criteria.");
+                    }
+                } else {
+                    crnLayout.setError("Wrong current password.");
+                }
+
             }
         });
 
