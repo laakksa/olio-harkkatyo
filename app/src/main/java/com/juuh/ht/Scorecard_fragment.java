@@ -1,5 +1,8 @@
 package com.juuh.ht;
 
+import android.content.ContentUris;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,18 +23,25 @@ import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
+import static java.lang.Integer.parseInt;
+
 public class Scorecard_fragment extends Fragment {
 
-    JSONWriteAndRead jwr = new JSONWriteAndRead();
+    JSONWriteAndRead jwr = JSONWriteAndRead.getInstance();
     String ID = "-";
+    SharedPreferences preferences;
+    String currentUser;
+
 
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        preferences = getContext().getSharedPreferences("settings", Context.MODE_PRIVATE);
+        currentUser = preferences.getString("currentUser", null);
         return inflater.inflate(R.layout.fragment_scorecard,container, false);
+
     }
 
 
@@ -38,8 +49,9 @@ public class Scorecard_fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
 
-        ArrayList<Match> matches = jwr.readIndex();
-        jwr.writefile0();
+        ArrayList<Match> matches = jwr.readIndex(currentUser);
+        System.out.println(currentUser);
+        jwr.writefile0(currentUser);
 
 
 
@@ -65,7 +77,9 @@ public class Scorecard_fragment extends Fragment {
 
 
                 if (match.getId().equals("0")){
-                    readGame("0","","");
+                    readGame("0","","",""
+                            ,"","",""
+                            ,"","","");
                     for (int i = 0; i < matches.size(); i++) {
                         ID = matches.get(i).getId();}
                     ID += "1";
@@ -74,11 +88,17 @@ public class Scorecard_fragment extends Fragment {
                     button.setOnClickListener(view1 -> saveGame(matches,ID));
                 }
                 else {
-                    readGame(match.getId(),match.getHomeTeam(),match.getAwayTeam());
+                    readGame(match.getId(),match.getHomeTeam(),match.getAwayTeam(),match.getRoundOneHomeScore()
+                    ,match.getRoundTwoHomeScore(),match.getHomeFinalScore()
+                    ,match.getRoundOneAwayScore(),match.getRoundTwoAwayScore()
+                    ,match.getAwayFinalScore(),match.getDate());
                     button.setOnClickListener(view12 -> saveGame(matches,match.getId()));
                     button2.setOnClickListener(v -> {
                         removeMatch(matches,match.getId());
-                        readGame("0","","");
+                        readGame("0","","",""
+                                ,"",""
+                                ,"","",""
+                                ,"");
                     });
                 }
 
@@ -97,11 +117,20 @@ public class Scorecard_fragment extends Fragment {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     public void saveGame(ArrayList<Match> matches, String id) {
 
+        EditText gameDate = getView().findViewById(R.id.editGameDate);
+
         EditText homeTeam = getView().findViewById(R.id.editTextTextPersonName);
+        EditText roundOneScoreHome = getView().findViewById(R.id.setFirstRoundHomeScore);
+        EditText roundTwoScoreHome = getView().findViewById(R.id.setSecondRoundHomeScore);
+        EditText homeScore = getView().findViewById(R.id.setHomeFinalScore);
+
         EditText awayTeam = getView().findViewById(R.id.editTextTextPersonName2);
+        EditText roundOneScoreAway = getView().findViewById(R.id.setFirstRoundAwayScore);
+        EditText roundTwoScoreAway = getView().findViewById(R.id.setSecondRoundAwayScore);
+        EditText awayScore = getView().findViewById(R.id.setAwayScore);
 
         EditText homePlayer1 = getView().findViewById(R.id.setfirstPlayer);
 
@@ -221,46 +250,135 @@ public class Scorecard_fragment extends Fragment {
 
         ArrayList<Throws> th = new ArrayList<>();
         System.out.println("Testi");
-        th.add(new Throws(1, homePlayer1.getText().toString(), homePlayer1Throw1.getText().toString(), homePlayer1Throw2.getText().toString(), homePlayer1Throw3.getText().toString(), homePlayer1Throw4.getText().toString()));
-        th.add(new Throws(2, homePlayer2.getText().toString(), homePlayer2Throw1.getText().toString(), homePlayer2Throw2.getText().toString(), homePlayer2Throw3.getText().toString(), homePlayer2Throw4.getText().toString()));
-        th.add(new Throws(3, homePlayer3.getText().toString(), homePlayer3Throw1.getText().toString(), homePlayer3Throw2.getText().toString(), homePlayer3Throw3.getText().toString(), homePlayer3Throw4.getText().toString()));
-        th.add(new Throws(4, homePlayer4.getText().toString(), homePlayer4Throw1.getText().toString(), homePlayer4Throw2.getText().toString(), homePlayer4Throw3.getText().toString(), homePlayer4Throw4.getText().toString()));
-        th.add(new Throws(5, homePlayer5.getText().toString(), homePlayer5Throw1.getText().toString(), homePlayer5Throw2.getText().toString(), homePlayer5Throw3.getText().toString(), homePlayer5Throw4.getText().toString()));
-        th.add(new Throws(6, homePlayer6.getText().toString(), homePlayer6Throw1.getText().toString(), homePlayer6Throw2.getText().toString(), homePlayer6Throw3.getText().toString(), homePlayer6Throw4.getText().toString()));
-        th.add(new Throws(7, homePlayer7.getText().toString(), homePlayer7Throw1.getText().toString(), homePlayer7Throw2.getText().toString(), homePlayer7Throw3.getText().toString(), homePlayer7Throw4.getText().toString()));
-        th.add(new Throws(8, homePlayer8.getText().toString(), homePlayer8Throw1.getText().toString(), homePlayer8Throw2.getText().toString(), homePlayer8Throw3.getText().toString(), homePlayer8Throw4.getText().toString()));
+        th.add(new Throws(1, homePlayer1.getText().toString()
+                , homePlayer1Throw1.getText().toString()
+                , homePlayer1Throw2.getText().toString()
+                , homePlayer1Throw3.getText().toString()
+                , homePlayer1Throw4.getText().toString()));
+        th.add(new Throws(2, homePlayer2.getText().toString()
+                , homePlayer2Throw1.getText().toString()
+                , homePlayer2Throw2.getText().toString()
+                , homePlayer2Throw3.getText().toString()
+                , homePlayer2Throw4.getText().toString()));
+        th.add(new Throws(3, homePlayer3.getText().toString()
+                , homePlayer3Throw1.getText().toString()
+                , homePlayer3Throw2.getText().toString()
+                , homePlayer3Throw3.getText().toString()
+                , homePlayer3Throw4.getText().toString()));
+        th.add(new Throws(4, homePlayer4.getText().toString()
+                , homePlayer4Throw1.getText().toString()
+                , homePlayer4Throw2.getText().toString()
+                , homePlayer4Throw3.getText().toString()
+                , homePlayer4Throw4.getText().toString()));
+        th.add(new Throws(5, homePlayer5.getText().toString()
+                , homePlayer5Throw1.getText().toString()
+                , homePlayer5Throw2.getText().toString()
+                , homePlayer5Throw3.getText().toString()
+                , homePlayer5Throw4.getText().toString()));
+        th.add(new Throws(6, homePlayer6.getText().toString()
+                , homePlayer6Throw1.getText().toString()
+                , homePlayer6Throw2.getText().toString()
+                , homePlayer6Throw3.getText().toString()
+                , homePlayer6Throw4.getText().toString()));
+        th.add(new Throws(7, homePlayer7.getText().toString()
+                , homePlayer7Throw1.getText().toString()
+                , homePlayer7Throw2.getText().toString()
+                , homePlayer7Throw3.getText().toString()
+                , homePlayer7Throw4.getText().toString()));
+        th.add(new Throws(8, homePlayer8.getText().toString()
+                , homePlayer8Throw1.getText().toString()
+                , homePlayer8Throw2.getText().toString()
+                , homePlayer8Throw3.getText().toString()
+                , homePlayer8Throw4.getText().toString()));
 
-        th.add(new Throws(9, awayPlayer1.getText().toString(), awayPlayer1Throw1.getText().toString(), awayPlayer1Throw2.getText().toString(), awayPlayer1Throw3.getText().toString(), awayPlayer1Throw4.getText().toString()));
-        th.add(new Throws(10, awayPlayer2.getText().toString(), awayPlayer2Throw1.getText().toString(), awayPlayer2Throw2.getText().toString(), awayPlayer2Throw3.getText().toString(), awayPlayer2Throw4.getText().toString()));
-        th.add(new Throws(11, awayPlayer3.getText().toString(), awayPlayer3Throw1.getText().toString(), awayPlayer3Throw2.getText().toString(), awayPlayer3Throw3.getText().toString(), awayPlayer3Throw4.getText().toString()));
-        th.add(new Throws(12, awayPlayer4.getText().toString(), awayPlayer4Throw1.getText().toString(), awayPlayer4Throw2.getText().toString(), awayPlayer4Throw3.getText().toString(), awayPlayer4Throw4.getText().toString()));
-        th.add(new Throws(13, awayPlayer5.getText().toString(), awayPlayer5Throw1.getText().toString(), awayPlayer5Throw2.getText().toString(), awayPlayer5Throw3.getText().toString(), awayPlayer5Throw4.getText().toString()));
-        th.add(new Throws(14, awayPlayer6.getText().toString(), awayPlayer6Throw1.getText().toString(), awayPlayer6Throw2.getText().toString(), awayPlayer6Throw3.getText().toString(), awayPlayer6Throw4.getText().toString()));
-        th.add(new Throws(15, awayPlayer7.getText().toString(), awayPlayer7Throw1.getText().toString(), awayPlayer7Throw2.getText().toString(), awayPlayer7Throw3.getText().toString(), awayPlayer7Throw4.getText().toString()));
-        th.add(new Throws(16, awayPlayer8.getText().toString(), awayPlayer8Throw1.getText().toString(), awayPlayer8Throw2.getText().toString(), awayPlayer8Throw3.getText().toString(), awayPlayer8Throw4.getText().toString()));
+        th.add(new Throws(9, awayPlayer1.getText().toString()
+                , awayPlayer1Throw1.getText().toString()
+                , awayPlayer1Throw2.getText().toString()
+                , awayPlayer1Throw3.getText().toString()
+                , awayPlayer1Throw4.getText().toString()));
+        th.add(new Throws(10, awayPlayer2.getText().toString()
+                , awayPlayer2Throw1.getText().toString()
+                , awayPlayer2Throw2.getText().toString()
+                , awayPlayer2Throw3.getText().toString()
+                , awayPlayer2Throw4.getText().toString()));
+        th.add(new Throws(11, awayPlayer3.getText().toString()
+                , awayPlayer3Throw1.getText().toString()
+                , awayPlayer3Throw2.getText().toString()
+                , awayPlayer3Throw3.getText().toString()
+                , awayPlayer3Throw4.getText().toString()));
+        th.add(new Throws(12, awayPlayer4.getText().toString()
+                , awayPlayer4Throw1.getText().toString()
+                , awayPlayer4Throw2.getText().toString()
+                , awayPlayer4Throw3.getText().toString()
+                , awayPlayer4Throw4.getText().toString()));
+        th.add(new Throws(13, awayPlayer5.getText().toString()
+                , awayPlayer5Throw1.getText().toString()
+                , awayPlayer5Throw2.getText().toString()
+                , awayPlayer5Throw3.getText().toString()
+                , awayPlayer5Throw4.getText().toString()));
+        th.add(new Throws(14, awayPlayer6.getText().toString()
+                , awayPlayer6Throw1.getText().toString()
+                , awayPlayer6Throw2.getText().toString()
+                , awayPlayer6Throw3.getText().toString()
+                , awayPlayer6Throw4.getText().toString()));
+        th.add(new Throws(15, awayPlayer7.getText().toString()
+                , awayPlayer7Throw1.getText().toString()
+                , awayPlayer7Throw2.getText().toString()
+                , awayPlayer7Throw3.getText().toString()
+                , awayPlayer7Throw4.getText().toString()));
+        th.add(new Throws(16, awayPlayer8.getText().toString()
+                , awayPlayer8Throw1.getText().toString()
+                , awayPlayer8Throw2.getText().toString()
+                , awayPlayer8Throw3.getText().toString()
+                , awayPlayer8Throw4.getText().toString()));
 
 
 
         for (int i = 0; i < matches.size(); i++) {
             if (id.equals(matches.get(i).getId())) {
-                matches.set(i,new Match(id,homeTeam.getText().toString(),awayTeam.getText().toString()));
-                jwr.writeIndex(matches);
-                jwr.write(th,id);
+                matches.set(i,new Match(id,homeTeam.getText().toString()
+                        ,awayTeam.getText().toString(),roundOneScoreHome.getText().toString()
+                        ,roundTwoScoreHome.getText().toString()
+                        ,homeScore.getText().toString()
+                        ,roundOneScoreAway.getText().toString()
+                        ,roundTwoScoreAway.getText().toString()
+                        ,awayScore.getText().toString(), gameDate.getText().toString()));
+                jwr.writeIndex(matches,currentUser);
+                jwr.write(th,id,currentUser);
                 return;
             }
         }
-        matches.add(new Match(id,homeTeam.getText().toString(),awayTeam.getText().toString()));
-        jwr.writeIndex(matches);
-        jwr.write(th,id);
+        matches.add(new Match(id,homeTeam.getText().toString()+"-"
+                ,awayTeam.getText().toString(),roundOneScoreHome.getText().toString()
+                ,roundTwoScoreHome.getText().toString()
+                ,homeScore.getText().toString()
+                ,roundOneScoreAway.getText().toString()
+                ,roundTwoScoreAway.getText().toString()
+                ,awayScore.getText().toString(), gameDate.getText().toString()));
+        jwr.writeIndex(matches, currentUser);
+        jwr.write(th,id, currentUser);
 
 
 
     }
 
-    public void readGame(String id, String homeTeam2, String awayTeam2) {
+    public void readGame(String id, String homeTeam2, String awayTeam2, String roundOneScoreHome2
+            ,String roundTwoScoreHome2, String FinalScoreHome
+            ,String roundOneScoreAway2, String roundTwoScoreAway2
+            ,String finalScoreAway, String date) {
+
+        EditText gameDate = getView().findViewById(R.id.editGameDate);
 
         EditText homeTeam = getView().findViewById(R.id.editTextTextPersonName);
+
+        EditText roundOneScoreHome = getView().findViewById(R.id.setFirstRoundHomeScore);
+        EditText roundTwoScoreHome = getView().findViewById(R.id.setSecondRoundHomeScore);
+        EditText homeScore = getView().findViewById(R.id.setHomeFinalScore);
+
         EditText awayTeam = getView().findViewById(R.id.editTextTextPersonName2);
+        EditText roundOneScoreAway = getView().findViewById(R.id.setFirstRoundAwayScore);
+        EditText roundTwoScoreAway = getView().findViewById(R.id.setSecondRoundAwayScore);
+        EditText awayScore = getView().findViewById(R.id.setAwayScore);
 
         EditText homePlayer1 = getView().findViewById(R.id.setfirstPlayer);
 
@@ -374,11 +492,29 @@ public class Scorecard_fragment extends Fragment {
         EditText awayPlayer8Throw2 = getView().findViewById(R.id.awayPlayer8Throw2);
         EditText awayPlayer8Throw3 = getView().findViewById(R.id.awayPlayer8Throw3);
         EditText awayPlayer8Throw4 = getView().findViewById(R.id.awayPlayer8Throw4);
+        TextView totalFirst = getView().findViewById(R.id.textViewTotalFirst);
+        TextView total2 = getView().findViewById(R.id.textTotal2);
+        TextView total3 = getView().findViewById(R.id.textTotal3);
+        TextView total4 = getView().findViewById(R.id.textTotal4);
 
-        ArrayList<Throws> th = jwr.read(id);
+        Integer t11,t12,t13,t14,t21,t22,t23,t24,t31,t32,t33,t34,t41,t42,t43,t44,t51,t52,t53,t54
+                ,t61,t62,t63,t64,t71,t72,t73,t74,t81,t82,t83,t84;
+        Integer total;
+
+
+        ArrayList<Throws> th = jwr.read(id, currentUser);
 
         homeTeam.setText(homeTeam2);
         awayTeam.setText(awayTeam2);
+        roundOneScoreHome.setText(roundOneScoreHome2);
+        roundTwoScoreHome.setText(roundTwoScoreHome2);
+        homeScore.setText(FinalScoreHome);
+        roundOneScoreAway.setText(roundOneScoreAway2);
+        roundTwoScoreAway.setText(roundTwoScoreAway2);
+        awayScore.setText(finalScoreAway);
+        gameDate.setText(date);
+
+
 
         homePlayer1.setText(th.get(0).getPlayer());
 
@@ -387,7 +523,42 @@ public class Scorecard_fragment extends Fragment {
         homePlayer1Throw3.setText(th.get(0).getScoreThird());
         homePlayer1Throw4.setText(th.get(0).getScoreFourth());
 
-        homePlayer2.setText(th.get(1).getPlayer());
+        try{t11 = parseInt(th.get(0).getScoreFirst());}catch (NumberFormatException e){ t11 = 0;}
+        try{t12 = parseInt(th.get(0).getScoreSecond());}catch (NumberFormatException e){t12 = 0;}
+        try{t13 = parseInt(th.get(0).getScoreThird());}catch (NumberFormatException e){t13 = 0;}
+        try{t14 = parseInt(th.get(0).getScoreFourth());}catch (NumberFormatException e){t14 = 0;}
+
+        total = t11+t12+t13+t14;
+        totalFirst.setText(total.toString());
+
+        try{t21 = parseInt(th.get(1).getScoreFirst());}catch (NumberFormatException e){ t21 = 0;}
+        try{t22 = parseInt(th.get(1).getScoreSecond());}catch (NumberFormatException e){t22 = 0;}
+        try{t23 = parseInt(th.get(1).getScoreThird());}catch (NumberFormatException e){t23 = 0;}
+        try{t24 = parseInt(th.get(1).getScoreFourth());}catch (NumberFormatException e){t24 = 0;}
+
+        total = t21+t22+t23+t24;
+        total2.setText(total.toString());
+
+        try{t31 = parseInt(th.get(2).getScoreFirst());}catch (NumberFormatException e){ t31 = 0;}
+        try{t32 = parseInt(th.get(2).getScoreSecond());}catch (NumberFormatException e){t32 = 0;}
+        try{t33 = parseInt(th.get(2).getScoreThird());}catch (NumberFormatException e){t33 = 0;}
+        try{t34 = parseInt(th.get(2).getScoreFourth());}catch (NumberFormatException e){t34 = 0;}
+
+        total = t31+t32+t33+t34;
+        total3.setText(total.toString());
+
+        try{t41 = parseInt(th.get(3).getScoreFirst());}catch (NumberFormatException e){ t41 = 0;}
+        try{t42 = parseInt(th.get(3).getScoreSecond());}catch (NumberFormatException e){t42 = 0;}
+        try{t43 = parseInt(th.get(3).getScoreThird());}catch (NumberFormatException e){t43 = 0;}
+        try{t44 = parseInt(th.get(3).getScoreFourth());}catch (NumberFormatException e){t44 = 0;}
+
+        total = t41+t42+t43+t44;
+        total4.setText(total.toString());
+
+
+
+
+
 
         homePlayer2Throw1.setText(th.get(1).getScoreFirst());
         homePlayer2Throw2.setText(th.get(1).getScoreSecond());
@@ -499,8 +670,8 @@ public class Scorecard_fragment extends Fragment {
         for (int i = 0; i < matches.size(); i++) {
             if (id.equals(matches.get(i).getId())) {
                 matches.remove(i);
-                jwr.writeIndex(matches);
-                jwr.fileDetele(id);
+                jwr.writeIndex(matches,currentUser);
+                jwr.fileDetele(id, currentUser);
                 return;
             }
         }
