@@ -67,17 +67,16 @@
                             android:id="@+id/archiveLogo"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:layout_marginStart="35dp"
-                            android:layout_centerVertical="true"
+                            android:layout_marginTop="8dp"
+                            android:layout_centerHorizontal="true"
                             android:src="@drawable/ic_baseline_archive_24" />
 
                         <TextView
                             android:id="@+id/playedgames"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_marginStart="70dp"
-                            android:layout_toRightOf="@+id/archiveLogo"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
                             android:text="X"
                             android:textColor="@color/white"
                             android:textSize="20sp" />
@@ -86,21 +85,13 @@
                             android:id="@+id/playedgames_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
                             android:layout_below="@+id/playedgames"
                             android:layout_centerHorizontal="true"
                             android:textColor="@color/white"
-                            android:text="saved scorecards on this device"
+                            android:text="Saved scorecards"
                             android:textSize="14sp" />
 
-                        <TextView
-                            android:id="@+id/yohave_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_above="@+id/playedgames"
-                            android:layout_centerHorizontal="true"
-                            android:textColor="@color/white"
-                            android:text="You have"
-                            android:textSize="14sp" />
 
 
                     </RelativeLayout>
