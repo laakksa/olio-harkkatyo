@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,8 @@ public class LoginFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_login, container, false);
         preferences = getContext().getSharedPreferences("settings", Context.MODE_PRIVATE);
         return v;
@@ -71,10 +73,12 @@ public class LoginFragment extends Fragment {
                         Boolean checkuserpass = DB.checkusernamepassword(user, encryptedpass);
                         if (checkuserpass == true) {
                             preferences.edit().putString("currentUser", user).commit();
-                            if (getArguments().getString("selectedFragment").equals("Scorecard")) {
+                            if (getArguments().getString("selectedFragment").
+                                    equals("Scorecard")) {
                                 getFragmentManager().beginTransaction().replace(R.id.frag_container,
                                         new Scorecard_fragment()).commit();
-                            } else if (getArguments().getString("selectedFragment").equals("Profile")) {
+                            } else if (getArguments().getString("selectedFragment").
+                                    equals("Profile")) {
                                 getFragmentManager().beginTransaction().replace(R.id.frag_container,
                                         new ProfileFragment()).commit();
                             }
@@ -94,7 +98,7 @@ public class LoginFragment extends Fragment {
 
         btnsignup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { //TODO: fragmentin vaihto rekisteröitymis fragmenttiin
+            public void onClick(View v) {
                 Fragment selectedFragment = new RegisterFragment();
                 getFragmentManager().beginTransaction().replace(R.id.frag_container,
                         selectedFragment).commit();

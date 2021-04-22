@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,8 @@ public class RegisterFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_register, container, false);
         preferences = getContext().getSharedPreferences("settings", Context.MODE_PRIVATE);
         return v;
@@ -55,9 +57,6 @@ public class RegisterFragment extends Fragment {
                 String pass = password.getText().toString();
                 String repass = repassword.getText().toString();
 
-                //if(user.equals("")||pass.equals("")||repass.equals(""))
-                  //  Toast.makeText(getActivity(), "Please enter all the fields", Toast.LENGTH_SHORT).show();
-
                 if (user.equalsIgnoreCase("")) {
                     username.setError("Please enter your username");
                 } if (pass.equalsIgnoreCase("")) {
@@ -80,7 +79,8 @@ public class RegisterFragment extends Fragment {
                         if (getArguments().getString("selectedFragment").equals("Scorecard")) {
                             getFragmentManager().beginTransaction().replace(R.id.frag_container,
                                     new Scorecard_fragment()).commit();
-                        } else if (getArguments().getString("selectedFragment").equals("Profile")) {
+                        } else if (getArguments().getString("selectedFragment").
+                                equals("Profile")) {
                             getFragmentManager().beginTransaction().replace(R.id.frag_container,
                                     new ProfileFragment()).commit();
                         }
@@ -88,47 +88,7 @@ public class RegisterFragment extends Fragment {
                         username.setError("Registration failed: Unknown error");
                     }
                 }
-
-
-
-
-
-
-                /*
-                else if (checkpasswordcriterias(pass)) {
-                    if(pass.equals(repass)){
-                        Boolean checkuser = DB.checkusername(user);
-                        if(checkuser == false) {
-                            byte[] salt = HashSalt.getSalt();
-                            String encryptedpassword = HashSalt.encrypt(pass, salt);
-                            String saltString = Base64.getEncoder().encodeToString(salt);
-                            Boolean insert = DB.insertData(user, encryptedpassword, saltString);
-                            if(insert == true) {
-                                if (getArguments().getString("selectedFragment").equals("Scorecard")) {
-                                    getFragmentManager().beginTransaction().replace(R.id.frag_container,
-                                            new Scorecard_fragment()).commit();
-                                } else if (getArguments().getString("selectedFragment").equals("Profile")) {
-                                    getFragmentManager().beginTransaction().replace(R.id.frag_container,
-                                            new ProfileFragment()).commit();
-                                }
-
-                            } else {
-                                username.setError("Registration failed: Unknown error");
-                                //Toast.makeText(getActivity(), "Registration failes", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        else {
-                            username.setError("User already exists! Please signin.");
-                            //Toast.makeText(getActivity(), "User already exists! Please signin.", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        repassword.setError("Passwords not matching.");
-                        //Toast.makeText(getActivity(), "Passwords not matching.", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    password.setError("Passwords does not meet the criteria.");
-                    //Toast.makeText(getActivity(), "Passwords does not meet the criteria.", Toast.LENGTH_SHORT).show();
-                }*/
+                
             }
         });
 

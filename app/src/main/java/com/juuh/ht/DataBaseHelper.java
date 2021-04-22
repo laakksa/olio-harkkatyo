@@ -43,9 +43,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
+    public boolean deleteData(String username) {
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        long result = MyDB.delete("users", "username = ?",
+                new String[] {username});
+        if (result == -1) return false;
+        else
+            return true;
+    }
+
+
     public Boolean checkusername (String username) {
         SQLiteDatabase MyDB = this. getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from users where username = ?", new String[] {username});
+        Cursor cursor = MyDB.rawQuery("Select * from users where username = ?",
+                new String[] {username});
         if(cursor.getCount()>0)
             return true;
         else
@@ -54,7 +65,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public Boolean checkusernamepassword(String username, String password) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from users where username = ? and password = ?", new String[] {username, password});
+        Cursor cursor = MyDB.rawQuery("Select * from users where " +
+                "username = ? and password = ?", new String[] {username, password});
         if(cursor.getCount()>0)
             return true;
         else
@@ -63,7 +75,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public String getSalt(String username) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select salt from users where username = ?", new String[] {username});
+        Cursor cursor = MyDB.rawQuery("Select salt from users where username = ?",
+                new String[] {username});
         if(cursor.getCount()>0) {
             cursor.moveToFirst();
             String salt = cursor.getString(0);
