@@ -49,6 +49,7 @@ public class MatchesFragment extends Fragment {
         });
         matchRecycler.setAdapter(adapter);
         b = v.findViewById(R.id.graphbutton);
+        //Open Graph fragment on button click
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

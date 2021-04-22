@@ -17,6 +17,7 @@ public class JSONAsyncTask extends AsyncTask<String, Void, String> {
     }
 
     @Override
+    //Gets json from url and returns it as a string
     protected String doInBackground(String... urls) {
         String stringURL = urls[0];
         String result;

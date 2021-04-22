@@ -86,10 +86,10 @@ public class GraphFragment extends Fragment {
 
     public void updateGraph(TeamEntry selectedTeam){
         int selectedTeamid = selectedTeam.id;
+        ArrayList<Entry> entries = new ArrayList<>();
         ArrayList<MatchEntry> matches = entryManager.getMatchesList();
         String startdate = matches.get(0).getDatetime();
         String enddate = matches.get(matches.size()-1).getDatetime();
-        ArrayList<Entry> entries = new ArrayList<>();
         LocalDateTime dateTimeStart = LocalDateTime.parse(startdate,
                 DateTimeFormatter.ISO_OFFSET_DATE_TIME);
         LocalDateTime dateTimeEnd = LocalDateTime.parse(enddate,
@@ -136,7 +136,7 @@ public class GraphFragment extends Fragment {
             }
         }
 
-        //Create chart from data parsed above
+        //Create and format chart from data parsed above
         Collections.sort(entries, new EntryXComparator());
         ScatterDataSet dataSet = new ScatterDataSet(entries, "Score");
         dataSet.setColor(R.color.design_default_color_primary);

@@ -64,7 +64,8 @@ public class LeaderBoardFragment extends Fragment {
             int losses = entries.get(i).losses;
             int points = entries.get(i).points;
 
-            //Create textviews for cells in table and add them to row, then add row to tablelayout
+            //Create and format textviews for cells in table and add them to row, then add
+            // row to tablelayout
             TextView tvPosition = new TextView(getContext());
             tvPosition.setText(position);
             TextView tvName = new TextView(getContext());
