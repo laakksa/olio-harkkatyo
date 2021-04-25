@@ -1,9 +1,7 @@
 package com.juuh.ht;
 
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 
@@ -52,11 +49,11 @@ public class Scorecard_fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
 
+        //Reads list of index.json that contains main details from all matches
         ArrayList<Match> matches = jwr.readIndex(currentUser);
-        System.out.println(currentUser);
         jwr.writefile0(currentUser);
 
-        //Creating spinner for matches
+        //Creating spinner for matches and putting names from list of all matches
 
         Spinner spinner = (Spinner) view.findViewById(R.id.spinner2);
 
@@ -66,6 +63,8 @@ public class Scorecard_fragment extends Fragment {
         adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(adapter);
+
+        //Creating next free id
 
         for (int i = 0; i < matches.size(); i++) {
             ID = matches.get(i).getId();}
@@ -87,8 +86,6 @@ public class Scorecard_fragment extends Fragment {
                     for (int i = 0; i < matches.size(); i++) {
                         ID = matches.get(i).getId();}
                     ID += "1";
-                    System.out.println(ID);
-                    System.out.println("MatchID = 0");
                     button.setOnClickListener(view1 -> {saveGame(matches,ID);
                         readGame("0","","",""
                                 ,"",""
@@ -111,7 +108,7 @@ public class Scorecard_fragment extends Fragment {
                                 ,"");
                     spinner.setSelection(0);
                     });
-
+                    //Deletes selected match
                     button2.setOnClickListener(v -> {
                         removeMatch(matches,match.getId());
                         readGame("0","","",""
@@ -137,6 +134,8 @@ public class Scorecard_fragment extends Fragment {
     }
 
 
+    //Takes list of all matches and match id. Then first reads scores that user give then
+    //save to throws and matches
 
     public void saveGame(ArrayList<Match> matches, String id) {
 
@@ -270,92 +269,91 @@ public class Scorecard_fragment extends Fragment {
 
         //Adding scores to arraylist and throws object
 
-        ArrayList<Throws> th = new ArrayList<>();
-        System.out.println("Testi");
-        th.add(new Throws(1, homePlayer1.getText().toString()
+        ArrayList<Throwdata_scorecard> th = new ArrayList<>();
+        th.add(new Throwdata_scorecard(1, homePlayer1.getText().toString()
                 , homePlayer1Throw1.getText().toString()
                 , homePlayer1Throw2.getText().toString()
                 , homePlayer1Throw3.getText().toString()
                 , homePlayer1Throw4.getText().toString()));
-        th.add(new Throws(2, homePlayer2.getText().toString()
+        th.add(new Throwdata_scorecard(2, homePlayer2.getText().toString()
                 , homePlayer2Throw1.getText().toString()
                 , homePlayer2Throw2.getText().toString()
                 , homePlayer2Throw3.getText().toString()
                 , homePlayer2Throw4.getText().toString()));
-        th.add(new Throws(3, homePlayer3.getText().toString()
+        th.add(new Throwdata_scorecard(3, homePlayer3.getText().toString()
                 , homePlayer3Throw1.getText().toString()
                 , homePlayer3Throw2.getText().toString()
                 , homePlayer3Throw3.getText().toString()
                 , homePlayer3Throw4.getText().toString()));
-        th.add(new Throws(4, homePlayer4.getText().toString()
+        th.add(new Throwdata_scorecard(4, homePlayer4.getText().toString()
                 , homePlayer4Throw1.getText().toString()
                 , homePlayer4Throw2.getText().toString()
                 , homePlayer4Throw3.getText().toString()
                 , homePlayer4Throw4.getText().toString()));
-        th.add(new Throws(5, homePlayer5.getText().toString()
+        th.add(new Throwdata_scorecard(5, homePlayer5.getText().toString()
                 , homePlayer5Throw1.getText().toString()
                 , homePlayer5Throw2.getText().toString()
                 , homePlayer5Throw3.getText().toString()
                 , homePlayer5Throw4.getText().toString()));
-        th.add(new Throws(6, homePlayer6.getText().toString()
+        th.add(new Throwdata_scorecard(6, homePlayer6.getText().toString()
                 , homePlayer6Throw1.getText().toString()
                 , homePlayer6Throw2.getText().toString()
                 , homePlayer6Throw3.getText().toString()
                 , homePlayer6Throw4.getText().toString()));
-        th.add(new Throws(7, homePlayer7.getText().toString()
+        th.add(new Throwdata_scorecard(7, homePlayer7.getText().toString()
                 , homePlayer7Throw1.getText().toString()
                 , homePlayer7Throw2.getText().toString()
                 , homePlayer7Throw3.getText().toString()
                 , homePlayer7Throw4.getText().toString()));
-        th.add(new Throws(8, homePlayer8.getText().toString()
+        th.add(new Throwdata_scorecard(8, homePlayer8.getText().toString()
                 , homePlayer8Throw1.getText().toString()
                 , homePlayer8Throw2.getText().toString()
                 , homePlayer8Throw3.getText().toString()
                 , homePlayer8Throw4.getText().toString()));
 
-        th.add(new Throws(9, awayPlayer1.getText().toString()
+        th.add(new Throwdata_scorecard(9, awayPlayer1.getText().toString()
                 , awayPlayer1Throw1.getText().toString()
                 , awayPlayer1Throw2.getText().toString()
                 , awayPlayer1Throw3.getText().toString()
                 , awayPlayer1Throw4.getText().toString()));
-        th.add(new Throws(10, awayPlayer2.getText().toString()
+        th.add(new Throwdata_scorecard(10, awayPlayer2.getText().toString()
                 , awayPlayer2Throw1.getText().toString()
                 , awayPlayer2Throw2.getText().toString()
                 , awayPlayer2Throw3.getText().toString()
                 , awayPlayer2Throw4.getText().toString()));
-        th.add(new Throws(11, awayPlayer3.getText().toString()
+        th.add(new Throwdata_scorecard(11, awayPlayer3.getText().toString()
                 , awayPlayer3Throw1.getText().toString()
                 , awayPlayer3Throw2.getText().toString()
                 , awayPlayer3Throw3.getText().toString()
                 , awayPlayer3Throw4.getText().toString()));
-        th.add(new Throws(12, awayPlayer4.getText().toString()
+        th.add(new Throwdata_scorecard(12, awayPlayer4.getText().toString()
                 , awayPlayer4Throw1.getText().toString()
                 , awayPlayer4Throw2.getText().toString()
                 , awayPlayer4Throw3.getText().toString()
                 , awayPlayer4Throw4.getText().toString()));
-        th.add(new Throws(13, awayPlayer5.getText().toString()
+        th.add(new Throwdata_scorecard(13, awayPlayer5.getText().toString()
                 , awayPlayer5Throw1.getText().toString()
                 , awayPlayer5Throw2.getText().toString()
                 , awayPlayer5Throw3.getText().toString()
                 , awayPlayer5Throw4.getText().toString()));
-        th.add(new Throws(14, awayPlayer6.getText().toString()
+        th.add(new Throwdata_scorecard(14, awayPlayer6.getText().toString()
                 , awayPlayer6Throw1.getText().toString()
                 , awayPlayer6Throw2.getText().toString()
                 , awayPlayer6Throw3.getText().toString()
                 , awayPlayer6Throw4.getText().toString()));
-        th.add(new Throws(15, awayPlayer7.getText().toString()
+        th.add(new Throwdata_scorecard(15, awayPlayer7.getText().toString()
                 , awayPlayer7Throw1.getText().toString()
                 , awayPlayer7Throw2.getText().toString()
                 , awayPlayer7Throw3.getText().toString()
                 , awayPlayer7Throw4.getText().toString()));
-        th.add(new Throws(16, awayPlayer8.getText().toString()
+        th.add(new Throwdata_scorecard(16, awayPlayer8.getText().toString()
                 , awayPlayer8Throw1.getText().toString()
                 , awayPlayer8Throw2.getText().toString()
                 , awayPlayer8Throw3.getText().toString()
                 , awayPlayer8Throw4.getText().toString()));
 
 
-        //adding match detail to match object
+        //adding match details to match object
 
 
         for (int i = 0; i < matches.size(); i++) {
@@ -385,6 +383,8 @@ public class Scorecard_fragment extends Fragment {
 
 
     }
+
+    //Takes main match details and id. Then reads file and show results to user.
 
     public void readGame(String id, String homeTeam2, String awayTeam2, String roundOneScoreHome2
             ,String roundTwoScoreHome2, String FinalScoreHome
@@ -539,10 +539,10 @@ public class Scorecard_fragment extends Fragment {
         Integer t1,t2,t3,t4;
         Integer total;
 
-        //Setting game detail from index.JSON which contains match data
+        //Setting game details that are given
 
 
-        ArrayList<Throws> th = jwr.read(id, currentUser);
+        ArrayList<Throwdata_scorecard> th = jwr.read(id, currentUser);
 
         homeTeam.setText(homeTeam2);
         awayTeam.setText(awayTeam2);
@@ -556,12 +556,7 @@ public class Scorecard_fragment extends Fragment {
 
 
 
-        homePlayer1.setText(th.get(0).getPlayer());
 
-        homePlayer1Throw1.setText(th.get(0).getScoreFirst());
-        homePlayer1Throw2.setText(th.get(0).getScoreSecond());
-        homePlayer1Throw3.setText(th.get(0).getScoreThird());
-        homePlayer1Throw4.setText(th.get(0).getScoreFourth());
 
         //Calculating total score for every player
 
@@ -698,7 +693,15 @@ public class Scorecard_fragment extends Fragment {
 
 
 
-        //Reading score
+        //Reading scores to every player and show that to user
+        homePlayer1.setText(th.get(0).getPlayer());
+
+        homePlayer1Throw1.setText(th.get(0).getScoreFirst());
+        homePlayer1Throw2.setText(th.get(0).getScoreSecond());
+        homePlayer1Throw3.setText(th.get(0).getScoreThird());
+        homePlayer1Throw4.setText(th.get(0).getScoreFourth());
+
+
         homePlayer2.setText(th.get(1).getPlayer());
 
         homePlayer2Throw1.setText(th.get(1).getScoreFirst());
@@ -806,6 +809,8 @@ public class Scorecard_fragment extends Fragment {
         awayPlayer8Throw3.setText(th.get(15).getScoreThird());
         awayPlayer8Throw4.setText(th.get(15).getScoreFourth());
     }
+
+        //Takes list of all matches and id. Deletes match with given id
 
     public void removeMatch(ArrayList<Match> matches, String id){
         for (int i = 0; i < matches.size(); i++) {

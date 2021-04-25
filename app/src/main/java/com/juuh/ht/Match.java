@@ -1,6 +1,6 @@
 package com.juuh.ht;
 
-//Contains data of everymatvh
+//Contains data of match key values like score, date and id
 
 public class Match {
 

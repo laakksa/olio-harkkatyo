@@ -1,11 +1,6 @@
 package com.juuh.ht;
 
 
-import android.os.Build;
-import android.os.FileUtils;
-
-import androidx.annotation.RequiresApi;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,8 +14,6 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class JSONWriteAndRead {
@@ -30,14 +23,18 @@ public class JSONWriteAndRead {
         return jwr;
     }
 
+        //Takes list of throws, match id and users name
+        //Writes throw data to json file that is located in users own folder
 
-        public void write(ArrayList<Throws> th,String id,String username) {
+
+        public void write(ArrayList<Throwdata_scorecard> th, String id, String username) {
 
 
             //Creating a JSONObject object
             JSONObject jsonObject = new JSONObject();
             JSONArray jsonarray = new JSONArray();
-            //Inserting key-value pairs into the json object
+
+            //Creating folder and throw data files to user
             try {
                 File root = new File("/data/user/0/com.juuh.ht/files/"+username+"/");
                 root.mkdir();
@@ -54,6 +51,7 @@ public class JSONWriteAndRead {
                     jsonObject = new JSONObject();
 
                 }
+                //Writing scores to json file
                 fos.write(jsonarray.toString().getBytes());
                 fos.close();
 
@@ -64,24 +62,26 @@ public class JSONWriteAndRead {
         }
 
 
-        public ArrayList<Throws> read(String id, String username){
+        //Takes match id and username. Reads file from users own folder and saves data to ArrayList
+        //Returns Arraylist that contains throws data
+
+        public ArrayList<Throwdata_scorecard> read(String id, String username){
             String json = null;
             try {
                 json = readFileAsString(username,id+".json");
-                System.out.println(json);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            ArrayList<Throws> th = new ArrayList<>();
+            ArrayList<Throwdata_scorecard> th = new ArrayList<>();
 
-            //Reading match info from index.json
+            //Reading throws data from file
 
                 try{
                     JSONArray jarray = new JSONArray(json);
                     for (int i = 0; i < 16; i++) {
                         JSONObject jobtect = jarray.getJSONObject(i);
-                        th.add(new Throws((i+1),jobtect.getString("Name")
+                        th.add(new Throwdata_scorecard((i+1),jobtect.getString("Name")
                                 ,jobtect.getString("score_first")
                                 ,jobtect.getString("score_second")
                                 ,jobtect.getString("score_third")
@@ -101,7 +101,7 @@ public class JSONWriteAndRead {
 
         }
 
-        //Reading file as string
+        //Takes username and filename. Reads file to string and returns that
 
         public String readFileAsString(String username, String fileName) throws IOException {
 
@@ -116,7 +116,8 @@ public class JSONWriteAndRead {
 
         }
 
-        //Readinf index file that contains name and score of every match
+        //Taking username and returns arraylist of all matches and main values of match like date
+        // and teams.
 
         public ArrayList<Match> readIndex(String username){
             String json = null;
@@ -127,10 +128,14 @@ public class JSONWriteAndRead {
             }
             ArrayList<Match> matches = new ArrayList<>();
 
+            //Creating match 0 what is empty match
+
             if (json == null){
                 matches.add(new Match("0", "New Game", ""
                         ,"","",""
                         ,"","","",""));
+
+                //Making folder to user
                 File root1 = new File("/data/user/0/com.juuh.ht/files/");
                 root1.mkdir();
                 File root2 = new File("/data/user/0/com.juuh.ht/files/"+username+"/");
@@ -140,7 +145,7 @@ public class JSONWriteAndRead {
 
             else {
 
-
+            //Readind match main data from index file and saving it to matches object
                 try {
                     JSONArray jarray = new JSONArray(json);
                     for (int i = 0; i < jarray.length(); i++) {
@@ -166,7 +171,8 @@ public class JSONWriteAndRead {
 
         }
 
-        //Writting index
+        //Writing index file that contains main data of matches like name and date.
+        //Takes list of matches and username.
 
         public void writeIndex(ArrayList<Match> matches, String username){
 
@@ -174,11 +180,15 @@ public class JSONWriteAndRead {
             //Creating a JSONObject object
             JSONObject jsonObject = new JSONObject();
             JSONArray jsonarray = new JSONArray();
-            //Inserting key-value pairs into the json object
+
+
+            // Creating index file
             try {
 
                 FileOutputStream fos = new FileOutputStream(new File(
                         "/data/user/0/com.juuh.ht/files/"+username+"/"+"index.json"));
+
+                //Writing main details of all matches to index file
 
                 for (int i = 0; i < matches.size(); i++) {
                     jsonObject.put("id",matches.get(i).getId());
@@ -203,6 +213,8 @@ public class JSONWriteAndRead {
             }
             System.out.println("JSON file created: "+jsonObject);
         }
+
+        //Takes username. Writes throw data file0 that is empty. Can be used show empty scorecard.
         public void writefile0(String username) {
 
         FileOutputStream fos = null;
@@ -223,6 +235,8 @@ public class JSONWriteAndRead {
             e.printStackTrace();
         }
     }
+
+    //Takes match id and username. Deletes selected match.
 
     public void fileDetele(String id, String username){
         File fdelete = new File(
