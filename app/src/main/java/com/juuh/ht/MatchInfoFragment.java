@@ -14,12 +14,12 @@ import androidx.fragment.app.Fragment;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-//TODO Lisää infoa tähän
 public class MatchInfoFragment extends Fragment {
     View v;
     TextView textView, score, teams, datetv;
     @Nullable
     @Override
+    //This fragment opens when clicking on match in matches view
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_match_info, container, false);

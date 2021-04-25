@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.concurrent.ExecutionException;
+
+//This fragment opens when clicking on leaderboard in bottom navigation bar
 public class LeaderBoardFragment extends Fragment {
     View v;
     TableLayout table;

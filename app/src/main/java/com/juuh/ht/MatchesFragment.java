@@ -21,6 +21,7 @@ public class MatchesFragment extends Fragment {
     RecyclerView matchRecycler;
     @Nullable
     @Override
+    //This fragment is shown when clicking on matches in bottom navigation bar
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_matches, container, false);
