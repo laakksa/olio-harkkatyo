@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,7 +39,7 @@ public class ProfileFragment extends Fragment {
     TextView userTextView, savedTextView;
     EditText crnpassword, newpassword, newrepassword;
     String usrname;
-    Integer savedScorecards = 0;
+    Integer savedScorecards = -1;
     SharedPreferences preferences;
 
     @Nullable
@@ -65,7 +66,7 @@ public class ProfileFragment extends Fragment {
         userTextView = (TextView) view.findViewById(R.id.usernameBox);
         userTextView.setText("Your username: \n" + usrname);
         savedTextView = (TextView) view.findViewById(R.id.playedgames);
-        savedTextView.setText(savedScorecards);
+        savedTextView.setText(savedScorecards.toString());
         crnpassword = (EditText) view.findViewById(R.id.currentpassword);
         newpassword = (EditText) view.findViewById(R.id.newpassword);
         newrepassword = (EditText) view.findViewById(R.id.newrepassword);
@@ -79,7 +80,7 @@ public class ProfileFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                //käydään läpi onko kentätä tyhjiä vai ei
+                //Check if fields are empty or not
                 if (crnpassword.getText().toString().equals("")) {
                     crnLayout.setError("Please enter your current password");
                 } else {
@@ -95,7 +96,7 @@ public class ProfileFragment extends Fragment {
                 } else {
                     renewLayout.setError(null);
                 }
-                //tarkistetaan vanha salasana ja uusi salasana
+                //Check old and new password
                 String salt = DB.getSalt(usrname);
                 byte[] saltArray = Base64.getDecoder().decode(salt);
                 String encryptedpass = HashSalt.encrypt(crnpassword.getText().toString(),
