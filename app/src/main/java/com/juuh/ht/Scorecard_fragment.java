@@ -27,6 +27,8 @@ import static java.lang.Integer.parseInt;
 
 public class Scorecard_fragment extends Fragment {
 
+    //Creating variables
+
     JSONWriteAndRead jwr = JSONWriteAndRead.getInstance();
     String ID = "-";
     SharedPreferences preferences;
@@ -53,7 +55,7 @@ public class Scorecard_fragment extends Fragment {
         System.out.println(currentUser);
         jwr.writefile0(currentUser);
 
-
+        //Creating spinner for matches
 
         Spinner spinner = (Spinner) view.findViewById(R.id.spinner2);
 
@@ -74,7 +76,7 @@ public class Scorecard_fragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Match match = (Match) spinner.getSelectedItem();
-
+                //If selected match is 0, shows empty match
 
                 if (match.getId().equals("0")){
                     readGame("0","","",""
@@ -87,6 +89,9 @@ public class Scorecard_fragment extends Fragment {
                     System.out.println("MatchID = 0");
                     button.setOnClickListener(view1 -> saveGame(matches,ID));
                 }
+
+
+                //If selected match something else showning that match
                 else {
                     readGame(match.getId(),match.getHomeTeam(),match.getAwayTeam(),match.getRoundOneHomeScore()
                     ,match.getRoundTwoHomeScore(),match.getHomeFinalScore()
@@ -120,6 +125,8 @@ public class Scorecard_fragment extends Fragment {
 
     public void saveGame(ArrayList<Match> matches, String id) {
 
+        //Creating variables
+
         EditText gameDate = getView().findViewById(R.id.editGameDate);
 
         EditText homeTeam = getView().findViewById(R.id.editTextTextPersonName);
@@ -141,7 +148,7 @@ public class Scorecard_fragment extends Fragment {
 
         EditText homePlayer2 = getView().findViewById(R.id.setsecondPlayer);
 
-        EditText homePlayer2Throw1 = getView().findViewById(R.id.player2Throw);
+        EditText homePlayer2Throw1 = getView().findViewById(R.id.player2Throw5);
         EditText homePlayer2Throw2 = getView().findViewById(R.id.player2Throw2);
         EditText homePlayer2Throw3 = getView().findViewById(R.id.player2Throw3);
         EditText homePlayer2Throw4 = getView().findViewById(R.id.player2Throw4);
@@ -169,10 +176,10 @@ public class Scorecard_fragment extends Fragment {
 
         EditText homePlayer6 = getView().findViewById(R.id.setsecondPlayer2);
 
-        EditText homePlayer6Throw1 = getView().findViewById(R.id.player2Throw5);
-        EditText homePlayer6Throw2 = getView().findViewById(R.id.player2Throw6);
-        EditText homePlayer6Throw3 = getView().findViewById(R.id.player2Throw7);
-        EditText homePlayer6Throw4 = getView().findViewById(R.id.player2Throw8);
+        EditText homePlayer6Throw1 = getView().findViewById(R.id.player2Throw6);
+        EditText homePlayer6Throw2 = getView().findViewById(R.id.player2Throw7);
+        EditText homePlayer6Throw3 = getView().findViewById(R.id.player2Throw8);
+        EditText homePlayer6Throw4 = getView().findViewById(R.id.player2Throw);
 
         EditText homePlayer7 = getView().findViewById(R.id.setthirdPlayer2);
 
@@ -246,7 +253,7 @@ public class Scorecard_fragment extends Fragment {
         EditText awayPlayer8Throw4 = getView().findViewById(R.id.awayPlayer8Throw4);
 
 
-
+        //Adding scores to arraylist and throws object
 
         ArrayList<Throws> th = new ArrayList<>();
         System.out.println("Testi");
@@ -333,6 +340,8 @@ public class Scorecard_fragment extends Fragment {
                 , awayPlayer8Throw4.getText().toString()));
 
 
+        //adding match detail to match object
+
 
         for (int i = 0; i < matches.size(); i++) {
             if (id.equals(matches.get(i).getId())) {
@@ -367,6 +376,8 @@ public class Scorecard_fragment extends Fragment {
             ,String roundOneScoreAway2, String roundTwoScoreAway2
             ,String finalScoreAway, String date) {
 
+        //Adding variables
+
         EditText gameDate = getView().findViewById(R.id.editGameDate);
 
         EditText homeTeam = getView().findViewById(R.id.editTextTextPersonName);
@@ -389,7 +400,7 @@ public class Scorecard_fragment extends Fragment {
 
         EditText homePlayer2 = getView().findViewById(R.id.setsecondPlayer);
 
-        EditText homePlayer2Throw1 = getView().findViewById(R.id.player2Throw);
+        EditText homePlayer2Throw1 = getView().findViewById(R.id.player2Throw5);
         EditText homePlayer2Throw2 = getView().findViewById(R.id.player2Throw2);
         EditText homePlayer2Throw3 = getView().findViewById(R.id.player2Throw3);
         EditText homePlayer2Throw4 = getView().findViewById(R.id.player2Throw4);
@@ -417,10 +428,10 @@ public class Scorecard_fragment extends Fragment {
 
         EditText homePlayer6 = getView().findViewById(R.id.setsecondPlayer2);
 
-        EditText homePlayer6Throw1 = getView().findViewById(R.id.player2Throw5);
-        EditText homePlayer6Throw2 = getView().findViewById(R.id.player2Throw6);
-        EditText homePlayer6Throw3 = getView().findViewById(R.id.player2Throw7);
-        EditText homePlayer6Throw4 = getView().findViewById(R.id.player2Throw8);
+        EditText homePlayer6Throw1 = getView().findViewById(R.id.player2Throw6);
+        EditText homePlayer6Throw2 = getView().findViewById(R.id.player2Throw7);
+        EditText homePlayer6Throw3 = getView().findViewById(R.id.player2Throw8);
+        EditText homePlayer6Throw4 = getView().findViewById(R.id.player2Throw);
 
         EditText homePlayer7 = getView().findViewById(R.id.setthirdPlayer2);
 
@@ -496,10 +507,24 @@ public class Scorecard_fragment extends Fragment {
         TextView total2 = getView().findViewById(R.id.textTotal2);
         TextView total3 = getView().findViewById(R.id.textTotal3);
         TextView total4 = getView().findViewById(R.id.textTotal4);
+        TextView total5 = getView().findViewById(R.id.textTotal5);
+        TextView total6 = getView().findViewById(R.id.textTotal6);
+        TextView total7 = getView().findViewById(R.id.textTotal7);
+        TextView total8 = getView().findViewById(R.id.textTotal8);
+        TextView total9 = getView().findViewById(R.id.textTotal9);
+        TextView total10 = getView().findViewById(R.id.textTotal10);
+        TextView total11 = getView().findViewById(R.id.textTotal11);
+        TextView total12 = getView().findViewById(R.id.textTotal12);
+        TextView total13 = getView().findViewById(R.id.textTotal13);
+        TextView total14 = getView().findViewById(R.id.textTotal14);
+        TextView total15 = getView().findViewById(R.id.textTotal15);
+        TextView total16 = getView().findViewById(R.id.textTotal16);
 
-        Integer t11,t12,t13,t14,t21,t22,t23,t24,t31,t32,t33,t34,t41,t42,t43,t44,t51,t52,t53,t54
-                ,t61,t62,t63,t64,t71,t72,t73,t74,t81,t82,t83,t84;
+
+        Integer t1,t2,t3,t4;
         Integer total;
+
+        //Setting game detail from index.JSON which contains match data
 
 
         ArrayList<Throws> th = jwr.read(id, currentUser);
@@ -523,42 +548,142 @@ public class Scorecard_fragment extends Fragment {
         homePlayer1Throw3.setText(th.get(0).getScoreThird());
         homePlayer1Throw4.setText(th.get(0).getScoreFourth());
 
-        try{t11 = parseInt(th.get(0).getScoreFirst());}catch (NumberFormatException e){ t11 = 0;}
-        try{t12 = parseInt(th.get(0).getScoreSecond());}catch (NumberFormatException e){t12 = 0;}
-        try{t13 = parseInt(th.get(0).getScoreThird());}catch (NumberFormatException e){t13 = 0;}
-        try{t14 = parseInt(th.get(0).getScoreFourth());}catch (NumberFormatException e){t14 = 0;}
+        //Calculating total score for every player
 
-        total = t11+t12+t13+t14;
+        try{t1 = parseInt(th.get(0).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(0).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(0).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(0).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
+
+        total = t1+t2+t3+t4;
         totalFirst.setText(total.toString());
 
-        try{t21 = parseInt(th.get(1).getScoreFirst());}catch (NumberFormatException e){ t21 = 0;}
-        try{t22 = parseInt(th.get(1).getScoreSecond());}catch (NumberFormatException e){t22 = 0;}
-        try{t23 = parseInt(th.get(1).getScoreThird());}catch (NumberFormatException e){t23 = 0;}
-        try{t24 = parseInt(th.get(1).getScoreFourth());}catch (NumberFormatException e){t24 = 0;}
+        try{t1 = parseInt(th.get(1).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(1).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(1).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(1).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
 
-        total = t21+t22+t23+t24;
+        total = t1+t2+t3+t4;
         total2.setText(total.toString());
 
-        try{t31 = parseInt(th.get(2).getScoreFirst());}catch (NumberFormatException e){ t31 = 0;}
-        try{t32 = parseInt(th.get(2).getScoreSecond());}catch (NumberFormatException e){t32 = 0;}
-        try{t33 = parseInt(th.get(2).getScoreThird());}catch (NumberFormatException e){t33 = 0;}
-        try{t34 = parseInt(th.get(2).getScoreFourth());}catch (NumberFormatException e){t34 = 0;}
+        try{t1 = parseInt(th.get(2).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(2).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(2).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(2).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
 
-        total = t31+t32+t33+t34;
+        total = t1+t2+t3+t4;
         total3.setText(total.toString());
 
-        try{t41 = parseInt(th.get(3).getScoreFirst());}catch (NumberFormatException e){ t41 = 0;}
-        try{t42 = parseInt(th.get(3).getScoreSecond());}catch (NumberFormatException e){t42 = 0;}
-        try{t43 = parseInt(th.get(3).getScoreThird());}catch (NumberFormatException e){t43 = 0;}
-        try{t44 = parseInt(th.get(3).getScoreFourth());}catch (NumberFormatException e){t44 = 0;}
+        try{t1 = parseInt(th.get(3).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(3).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(3).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(3).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
 
-        total = t41+t42+t43+t44;
+        total = t1+t2+t3+t4;
         total4.setText(total.toString());
 
+        try{t1 = parseInt(th.get(4).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(4).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(4).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(4).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
+
+        total = t1+t2+t3+t4;
+        total5.setText(total.toString());
+
+        try{t1 = parseInt(th.get(5).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(5).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(5).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(5).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
+
+        total = t1+t2+t3+t4;
+        total6.setText(total.toString());
+
+        try{t1 = parseInt(th.get(6).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(6).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(6).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(6).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
+
+        total = t1+t2+t3+t4;
+        total7.setText(total.toString());
+
+        try{t1 = parseInt(th.get(7).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(7).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(7).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(7).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
+
+        total = t1+t2+t3+t4;
+        total8.setText(total.toString());
+
+        try{t1 = parseInt(th.get(8).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(8).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(8).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(8).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
+
+        total = t1+t2+t3+t4;
+        total9.setText(total.toString());
+
+        try{t1 = parseInt(th.get(9).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(9).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(9).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(9).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
+
+        total = t1+t2+t3+t4;
+        total10.setText(total.toString());
+
+        try{t1 = parseInt(th.get(10).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(10).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(10).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(10).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
+
+        total = t1+t2+t3+t4;
+        total11.setText(total.toString());
+
+        try{t1 = parseInt(th.get(11).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(11).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(11).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(11).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
+
+        total = t1+t2+t3+t4;
+        total12.setText(total.toString());
+
+        try{t1 = parseInt(th.get(12).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(12).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(12).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(12).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
+
+        total = t1+t2+t3+t4;
+        total13.setText(total.toString());
+
+        try{t1 = parseInt(th.get(13).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(13).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(13).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(13).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
+
+        total = t1+t2+t3+t4;
+        total14.setText(total.toString());
+
+        try{t1 = parseInt(th.get(14).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(14).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(14).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(14).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
+
+        total = t1+t2+t3+t4;
+        total15.setText(total.toString());
+
+        try{t1 = parseInt(th.get(15).getScoreFirst());}catch (NumberFormatException e){ t1 = 0;}
+        try{t2 = parseInt(th.get(15).getScoreSecond());}catch (NumberFormatException e){t2 = 0;}
+        try{t3 = parseInt(th.get(15).getScoreThird());}catch (NumberFormatException e){t3 = 0;}
+        try{t4 = parseInt(th.get(15).getScoreFourth());}catch (NumberFormatException e){t4 = 0;}
+
+        total = t1+t2+t3+t4;
+        total16.setText(total.toString());
 
 
 
 
+
+
+        //Reading score
 
         homePlayer2Throw1.setText(th.get(1).getScoreFirst());
         homePlayer2Throw2.setText(th.get(1).getScoreSecond());

@@ -75,6 +75,8 @@ public class JSONWriteAndRead {
 
             ArrayList<Throws> th = new ArrayList<>();
 
+            //Reading match info from index.json
+
                 try{
                     JSONArray jarray = new JSONArray(json);
                     for (int i = 0; i < 16; i++) {
@@ -99,6 +101,8 @@ public class JSONWriteAndRead {
 
         }
 
+        //Reading file as string
+
         public String readFileAsString(String username, String fileName) throws IOException {
 
             BufferedReader bf = new BufferedReader(
@@ -111,6 +115,8 @@ public class JSONWriteAndRead {
 
 
         }
+
+        //Readinf index file that contains name and score of every match
 
         public ArrayList<Match> readIndex(String username){
             String json = null;
@@ -159,6 +165,8 @@ public class JSONWriteAndRead {
             }
 
         }
+
+        //Writting index
 
         public void writeIndex(ArrayList<Match> matches, String username){
 

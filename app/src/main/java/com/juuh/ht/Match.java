@@ -1,5 +1,7 @@
 package com.juuh.ht;
 
+//Contains data of everymatvh
+
 public class Match {
 
     private String id;
