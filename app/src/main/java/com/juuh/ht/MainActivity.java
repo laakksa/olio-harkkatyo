@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
   
                 case R.id.nav_scorecard:
+                    //Check if user is logged in, if not redirect to login screen
                     currentUser = preferences.getString("currentUser", null);
                     if (currentUser != null){
                         selectedFragment = new Scorecard_fragment();
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 case R.id.nav_profile:
+                    //Check if user is logged in, if not redirect to login screen
                     currentUser = preferences.getString("currentUser", null);
                     if (currentUser != null){
                         selectedFragment = new ProfileFragment();

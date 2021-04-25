@@ -51,7 +51,7 @@ public class LeaderBoardFragment extends Fragment {
         createTableLayout(entries);
 
     }
-
+    //This method creates leaderboard tablelayout from Arraylist containing TeamEntries
     private void createTableLayout(ArrayList<TeamEntry> entries){
         //Create leaderboard table layout and populate it with data
         for (int i = 0; i < entries.size(); i++) {

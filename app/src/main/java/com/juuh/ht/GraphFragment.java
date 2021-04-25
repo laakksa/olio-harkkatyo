@@ -83,17 +83,19 @@ public class GraphFragment extends Fragment {
 
 
     }
-
+    //This method updates the graph to show data from selected team
     public void updateGraph(TeamEntry selectedTeam){
         int selectedTeamid = selectedTeam.id;
         ArrayList<Entry> entries = new ArrayList<>();
         ArrayList<MatchEntry> matches = entryManager.getMatchesList();
+        //Get datetime from first and last items in matches list
         String startdate = matches.get(0).getDatetime();
         String enddate = matches.get(matches.size()-1).getDatetime();
         LocalDateTime dateTimeStart = LocalDateTime.parse(startdate,
                 DateTimeFormatter.ISO_OFFSET_DATE_TIME);
         LocalDateTime dateTimeEnd = LocalDateTime.parse(enddate,
                 DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        //Calculate number of weeks between startdate and enddate
         long weeks = Duration.between(dateTimeStart, dateTimeEnd).toDays() / 6;
         String end = null;
         //Get data from fmi in one week size blocks due to API restrictions
@@ -115,6 +117,8 @@ public class GraphFragment extends Fragment {
                         float away_score = Float.parseFloat(String.valueOf(match.away_score));
                         for (WeatherEntry w : weatherEntries) {
                             if (w.getTime().equals(matchDatestring)) {
+                                //Add selected teams match score and corresponding temperature value
+                                //to chart entries list
                                 entries.add(new Entry(w.getTemp(), away_score));
                             }
                         }
@@ -128,6 +132,8 @@ public class GraphFragment extends Fragment {
                         float home_score = Float.parseFloat(String.valueOf(match.home_score));
                         for (WeatherEntry w : weatherEntries) {
                             if (w.getTime().equals(matchDatestring)) {
+                                //Add selected teams match score and corresponding temperature value
+                                //to chart entries list
                                 entries.add(new Entry(w.getTemp(), home_score));
                             }
                         }
@@ -145,7 +151,7 @@ public class GraphFragment extends Fragment {
         dataSet.setScatterShapeSize(20);
         dataSet.setValueFormatter(new ValueFormatter() {
             @Override
-            public String getFormattedValue(float value) {
+            public String getFormattedValue(float value) { //formats data points in chart to int
                 return "" + ((int) value);
             }
         });

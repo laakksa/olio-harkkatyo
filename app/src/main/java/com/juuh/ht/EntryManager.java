@@ -82,7 +82,7 @@ public class EntryManager {
     }
 
     public ArrayList<WeatherEntry> getWeather(String startdate, String enddate) {
-        //Get 30min temperature data between startdate and enddate
+        //Get 30min temperature data between startdate and enddate and return it as ArrayList
         ArrayList<WeatherEntry> entries = null;
         String weatherUrl = "https://opendata.fmi.fi/wfs/fin?service=WFS&" +
                 "version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::" +

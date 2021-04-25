@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
-
+//This adapter creates RecyclerView for MatchesFragment from arraylist of MatchEntries
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesViewHolder> {
     private ArrayList<MatchEntry> matches;
     Context context;
@@ -26,12 +26,14 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
     }
     @NonNull
     @Override
+    //This method creates ViewHolder for Matches from match_list_item layout file
     public MatchesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.match_list_item, parent, false);
         return new MatchesViewHolder(v);
     }
 
     @Override
+    //This method binds wanted attributes from MatchEntry to ViewHolder items
     public void onBindViewHolder(@NonNull MatchesViewHolder holder, int position) {
         MatchEntry match = matches.get(position);
         LocalDateTime date = LocalDateTime.parse(match.getDatetime(),
@@ -51,6 +53,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
         return matches.size();
     }
 
+    //This method sets up ViewHolder for MatchEntries
     public class MatchesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView date, hometeam, awayteam, awayscore, homescore, time;
         public MatchesViewHolder(@NonNull View itemView) {
