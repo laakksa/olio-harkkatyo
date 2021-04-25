@@ -25,10 +25,10 @@ public class XMLAsyncTask extends AsyncTask<String, Void, ArrayList<WeatherEntry
     }
 
     @Override
+    //Parses temperature data from FMI API and returns arraylist of WeatherEntries
     protected ArrayList<WeatherEntry> doInBackground(String... urls) {
         EntryManager entryManager = EntryManager.getInstance();
         ArrayList<WeatherEntry> weatherList = new ArrayList<>();
-        //https://opendata.fmi.fi/wfs/fin?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&place=Lappeenranta&parameters=ws_10min,t2m&starttime=2021-01-01T12:00:00Z&endtime=2021-01-05T12:00:00&
         String stringURL = urls[0];
         String[] result = null;
         XmlPullParser parser = null;
@@ -46,13 +46,17 @@ public class XMLAsyncTask extends AsyncTask<String, Void, ArrayList<WeatherEntry
                 parser.setInput(inputStream, "UTF-8");
                 int eventType = parser.getEventType();
                 WeatherEntry currentEntry = null;
+                int counter= 0;
+                //Adds time and temperaturevalue to WeatheEntry and adds it to ArrayList
                 while (eventType != XmlPullParser.END_DOCUMENT) {
+                    counter++;
                     String elementName;
                     switch (eventType) {
                         case XmlPullParser.START_TAG:
                             elementName = parser.getName();
                             if (elementName.equals("wml2:MeasurementTVP")) {
-                                currentEntry = new WeatherEntry();
+                                int id = 200 +counter;
+                                currentEntry = new WeatherEntry(id);
                                 weatherList.add(currentEntry);
                             } else if (currentEntry != null) {
                                 if (elementName.equals("wml2:time")) {

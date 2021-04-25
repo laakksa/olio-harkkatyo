@@ -14,38 +14,43 @@ public class EntryManager {
     private ArrayList<TeamEntry> TeamsList;
     private ArrayList<MatchEntry> matchesList;
     private static EntryManager em_instance = null;
-    private EntryManager(){
+
+    private EntryManager() {
         //Initialize teamsList and matchesList and populate them with data from Kyykka.com API
         TeamsList = new ArrayList<TeamEntry>();
         matchesList = new ArrayList<MatchEntry>();
         getTeams();
         getMatches();
     }
+
     //Singleton pattern for EntryManager
-    public static EntryManager getInstance(){
-        if (em_instance == null){
+    public static EntryManager getInstance() {
+        if (em_instance == null) {
             em_instance = new EntryManager();
         }
         return em_instance;
     }
 
-    public void addMatchEntry(MatchEntry entry){
+    public void addMatchEntry(MatchEntry entry) {
         matchesList.add(entry);
     }
 
-    public void addTeamEntry(TeamEntry entry){
+    public void addTeamEntry(TeamEntry entry) {
         TeamsList.add(entry);
     }
 
-    public ArrayList<TeamEntry> getTeamsList(){
+    public ArrayList<TeamEntry> getTeamsList() {
         return TeamsList;
     }
-    public ArrayList<MatchEntry> getMatchesList(){return matchesList;}
+
+    public ArrayList<MatchEntry> getMatchesList() {
+        return matchesList;
+    }
 
 
-    public void getTeams(){
+    public void getTeams() {
         //Get team data from kyykkacom API and store it in TeamsList
-        String myurl = "https://kyykka.com/api/teams/?format=json&season=1";
+        String myurl = "https://kyykka.com/api/teams/?format=json&season=2";
         String result;
         JSONAsyncTask get = new JSONAsyncTask();
         try {
@@ -75,8 +80,9 @@ public class EntryManager {
             e.printStackTrace();
         }
     }
-    public ArrayList<WeatherEntry> getWeather(String startdate, String enddate){
-        //Get 10min temperature data between startdate and enddate
+
+    public ArrayList<WeatherEntry> getWeather(String startdate, String enddate) {
+        //Get 30min temperature data between startdate and enddate and return it as ArrayList
         ArrayList<WeatherEntry> entries = null;
         String weatherUrl = "https://opendata.fmi.fi/wfs/fin?service=WFS&" +
                 "version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::" +
@@ -85,17 +91,17 @@ public class EntryManager {
         XMLAsyncTask xmltask = new XMLAsyncTask();
         try {
             entries = xmltask.execute(weatherUrl).get();
-        } catch (InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
-        } catch (ExecutionException e){
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
         return entries;
     }
 
     //Get match data from Kyykka.com API and store it in matchesList
-    public void getMatches(){
-        String matchUrl = "https://kyykka.com/api/matches/?format=json&season=1";
+    public void getMatches() {
+        String matchUrl = "https://kyykka.com/api/matches/?format=json&season=2";
         String result;
         JSONAsyncTask get = new JSONAsyncTask();
         try {

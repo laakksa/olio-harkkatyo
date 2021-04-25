@@ -66,7 +66,7 @@ public class ProfileFragment extends Fragment {
         userTextView = (TextView) view.findViewById(R.id.usernameBox);
         userTextView.setText("Your username: \n" + usrname);
         savedTextView = (TextView) view.findViewById(R.id.playedgames);
-        savedTextView.setText(savedScorecards.toString());
+        savedTextView.setText(String.valueOf(savedScorecards));
         crnpassword = (EditText) view.findViewById(R.id.currentpassword);
         newpassword = (EditText) view.findViewById(R.id.newpassword);
         newrepassword = (EditText) view.findViewById(R.id.newrepassword);

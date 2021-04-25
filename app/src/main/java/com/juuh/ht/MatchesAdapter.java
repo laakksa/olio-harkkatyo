@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
-
+//This adapter creates RecyclerView for MatchesFragment from arraylist of MatchEntries
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesViewHolder> {
     private ArrayList<MatchEntry> matches;
     Context context;
@@ -24,28 +26,22 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
     }
     @NonNull
     @Override
+    //This method creates ViewHolder for Matches from match_list_item layout file
     public MatchesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.match_list_item, parent, false);
         return new MatchesViewHolder(v);
     }
 
     @Override
+    //This method binds wanted attributes from MatchEntry to ViewHolder items
     public void onBindViewHolder(@NonNull MatchesViewHolder holder, int position) {
         MatchEntry match = matches.get(position);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-        SimpleDateFormat sdf2 = new SimpleDateFormat("dd.MM.yyyy");
-        SimpleDateFormat sdf3 = new SimpleDateFormat("HH:mm");
-        String datestring = "null";
-        String timestring = "null";
-        try {
-            datestring = sdf2.format(sdf.parse(match.getDatetime()));
-            timestring = sdf3.format(sdf.parse(match.getDatetime()));
-        } catch (ParseException e){
-            e.printStackTrace();
-        }
+        LocalDateTime date = LocalDateTime.parse(match.getDatetime(),
+                DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+
         //Set up list item from matches ArrayList
-        holder.date.setText(datestring);
-        holder.time.setText(timestring);
+        holder.date.setText(date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
+        holder.time.setText(date.format(DateTimeFormatter.ofPattern("HH:mm")));
         holder.hometeam.setText(String.valueOf(match.home_abbr));
         holder.awayteam.setText(String.valueOf(match.away_abbr));
         holder.homescore.setText(String.valueOf(match.home_score));
@@ -57,6 +53,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
         return matches.size();
     }
 
+    //This method sets up ViewHolder for MatchEntries
     public class MatchesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView date, hometeam, awayteam, awayscore, homescore, time;
         public MatchesViewHolder(@NonNull View itemView) {
@@ -78,6 +75,8 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
             }
         }
     }
+
+    //On click listener interface for list items
     private OnEntryClickListener onEntryClickListener;
     public interface OnEntryClickListener {
         void onEntryClick(View view, int position);

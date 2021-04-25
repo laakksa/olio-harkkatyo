@@ -1111,9 +1111,9 @@
             android:layout_height="1.5dp"
             android:layout_marginTop="28dp"
             android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view5"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp" />
+            tools:ignore="MissingConstraints" />
 
         <View
             android:id="@+id/view5"
@@ -1834,13 +1834,13 @@
 
         <EditText
             android:id="@+id/editGameDate"
-            android:layout_width="146dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
             android:ems="10"
             android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintHorizontal_bias="0.532"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 
@@ -1945,6 +1945,152 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/player4Throw4"
             app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <TextView
+            android:id="@+id/textTotal5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/view15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view16"
+            app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+        <TextView
+            android:id="@+id/textTotal6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/view14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view16"
+            app:layout_constraintTop_toBottomOf="@+id/view15" />
+
+        <TextView
+            android:id="@+id/textTotal7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/view5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view16"
+            app:layout_constraintTop_toBottomOf="@+id/view14" />
+
+        <TextView
+            android:id="@+id/textTotal8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/view7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view16"
+            app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+        <TextView
+            android:id="@+id/textTotal9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/view24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view25"
+            app:layout_constraintTop_toBottomOf="@+id/view27" />
+
+        <TextView
+            android:id="@+id/textTotal10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/view30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view25"
+            app:layout_constraintTop_toBottomOf="@+id/view24" />
+
+        <TextView
+            android:id="@+id/textTotal11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/view22"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view25"
+            app:layout_constraintTop_toBottomOf="@+id/view30" />
+
+        <TextView
+            android:id="@+id/textTotal12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/view21"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view25"
+            app:layout_constraintTop_toBottomOf="@+id/view22" />
+
+        <TextView
+            android:id="@+id/textTotal13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/view63"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view64"
+            app:layout_constraintTop_toBottomOf="@+id/view66" />
+
+        <TextView
+            android:id="@+id/textTotal14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/view69"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view64"
+            app:layout_constraintTop_toBottomOf="@+id/view63" />
+
+        <TextView
+            android:id="@+id/textTotal15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/view70"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view64"
+            app:layout_constraintTop_toBottomOf="@+id/view69" />
+
+        <TextView
+            android:id="@+id/textTotal16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/view61"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view64"
+            app:layout_constraintTop_toBottomOf="@+id/view70" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
