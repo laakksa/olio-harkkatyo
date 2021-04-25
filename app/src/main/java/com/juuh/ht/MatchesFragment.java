@@ -21,7 +21,8 @@ public class MatchesFragment extends Fragment {
     RecyclerView matchRecycler;
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_matches, container, false);
         EntryManager entryManager = EntryManager.getInstance();
 
@@ -40,7 +41,8 @@ public class MatchesFragment extends Fragment {
                 //Send position of list item to fragment so that correct match info can be displayed
                 args.putInt("position", position);
                 fragment.setArguments(args);
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+                        .beginTransaction();
                 transaction.replace(R.id.frag_container, fragment);
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 transaction.addToBackStack(null);
@@ -54,7 +56,8 @@ public class MatchesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new GraphFragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+                        .beginTransaction();
                 transaction.replace(R.id.frag_container, fragment);
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 transaction.addToBackStack(null);

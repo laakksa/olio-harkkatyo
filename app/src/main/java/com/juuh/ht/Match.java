@@ -73,7 +73,11 @@ public class Match {
     }
 
     public String toString(){
-        return homeTeam+""+awayTeam+" "+date;
+        if (this.getId().equals("0")) {
+            return homeTeam + awayTeam + " " + date;
+        } else {
+            return homeTeam + "-" + awayTeam + " " + date;
+        }
     }
 
 

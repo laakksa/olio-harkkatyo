@@ -20,7 +20,8 @@ public class MatchInfoFragment extends Fragment {
     TextView textView, score, teams, datetv;
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_match_info, container, false);
         textView = v.findViewById(R.id.matchinfo_temperature);
         teams = v.findViewById(R.id.matchinfo_teams);
@@ -37,7 +38,8 @@ public class MatchInfoFragment extends Fragment {
         //Display info of selected match
         MatchEntry selectedMatch = matches.get(position);
         String date = selectedMatch.getDatetime();
-        LocalDateTime localDateTime = LocalDateTime.parse(date, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        LocalDateTime localDateTime = LocalDateTime.parse(date,
+                DateTimeFormatter.ISO_OFFSET_DATE_TIME);
         String datecut = date.substring(0, date.length()-6) + "Z";
         ArrayList<WeatherEntry> weatherEntries = entryManager.getWeather(datecut,datecut);
         String weather = weatherEntries.get(0).getTemp() + "\u2103";
