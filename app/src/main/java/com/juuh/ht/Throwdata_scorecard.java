@@ -2,7 +2,7 @@ package com.juuh.ht;
 
 //Throws contains data of every throw
 
-public class Throws {
+public class Throwdata_scorecard {
 
     private int throw_turn;
 
@@ -13,8 +13,8 @@ public class Throws {
     private String scoreThird;
     private String scoreFourth;
 
-    public Throws (int throw_turn, String player, String scoreFirst, String scoreSecond,
-                   String scoreThird, String scoreFourth){
+    public Throwdata_scorecard(int throw_turn, String player, String scoreFirst, String scoreSecond,
+                               String scoreThird, String scoreFourth){
         this.throw_turn = throw_turn;
         this.player = player;
         this.scoreFirst = scoreFirst;
