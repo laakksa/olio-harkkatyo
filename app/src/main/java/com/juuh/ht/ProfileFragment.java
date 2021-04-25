@@ -80,7 +80,7 @@ public class ProfileFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                //käydään läpi onko kentätä tyhjiä vai ei
+                //Check if fields are empty or not
                 if (crnpassword.getText().toString().equals("")) {
                     crnLayout.setError("Please enter your current password");
                 } else {
@@ -96,7 +96,7 @@ public class ProfileFragment extends Fragment {
                 } else {
                     renewLayout.setError(null);
                 }
-                //tarkistetaan vanha salasana ja uusi salasana
+                //Check old and new password
                 String salt = DB.getSalt(usrname);
                 byte[] saltArray = Base64.getDecoder().decode(salt);
                 String encryptedpass = HashSalt.encrypt(crnpassword.getText().toString(),

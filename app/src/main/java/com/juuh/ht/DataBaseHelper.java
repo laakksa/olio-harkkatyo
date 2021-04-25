@@ -11,7 +11,8 @@ import androidx.annotation.Nullable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//TODO: kommentointi tähän, lähde on https://www.youtube.com/watch?v=8obgNNlj3Eo
+//This class manges the database where passwords are saved
+//Source: https://www.youtube.com/watch?v=8obgNNlj3Eo
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
