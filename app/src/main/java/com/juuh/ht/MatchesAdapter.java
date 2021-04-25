@@ -28,7 +28,8 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
     @Override
     //This method creates ViewHolder for Matches from match_list_item layout file
     public MatchesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.match_list_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.match_list_item, parent,
+                false);
         return new MatchesViewHolder(v);
     }
 

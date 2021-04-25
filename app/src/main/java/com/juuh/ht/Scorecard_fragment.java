@@ -39,7 +39,8 @@ public class Scorecard_fragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         preferences = getContext().getSharedPreferences("settings", Context.MODE_PRIVATE);
         currentUser = preferences.getString("currentUser", null);
         return inflater.inflate(R.layout.fragment_scorecard,container, false);
@@ -60,7 +61,8 @@ public class Scorecard_fragment extends Fragment {
         Spinner spinner = (Spinner) view.findViewById(R.id.spinner2);
 
         ArrayAdapter<Match> adapter =
-                new ArrayAdapter<>(view.getContext(),  android.R.layout.simple_spinner_item, matches);
+                new ArrayAdapter<>(view.getContext(),  android.R.layout.simple_spinner_item,
+                        matches);
         adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(adapter);
@@ -87,23 +89,36 @@ public class Scorecard_fragment extends Fragment {
                     ID += "1";
                     System.out.println(ID);
                     System.out.println("MatchID = 0");
-                    button.setOnClickListener(view1 -> saveGame(matches,ID));
+                    button.setOnClickListener(view1 -> {saveGame(matches,ID);
+                        readGame("0","","",""
+                                ,"",""
+                                ,"","",""
+                                ,"");});
                 }
 
 
                 //If selected match something else showning that match
                 else {
-                    readGame(match.getId(),match.getHomeTeam(),match.getAwayTeam(),match.getRoundOneHomeScore()
+                    readGame(match.getId(),match.getHomeTeam(),match.getAwayTeam(),
+                            match.getRoundOneHomeScore()
                     ,match.getRoundTwoHomeScore(),match.getHomeFinalScore()
                     ,match.getRoundOneAwayScore(),match.getRoundTwoAwayScore()
                     ,match.getAwayFinalScore(),match.getDate());
-                    button.setOnClickListener(view12 -> saveGame(matches,match.getId()));
+                    button.setOnClickListener(view12 -> {saveGame(matches,match.getId());
+                        readGame("0","","",""
+                                ,"",""
+                                ,"","",""
+                                ,"");
+                    spinner.setSelection(0);
+                    });
+
                     button2.setOnClickListener(v -> {
                         removeMatch(matches,match.getId());
                         readGame("0","","",""
                                 ,"",""
                                 ,"","",""
                                 ,"");
+                        spinner.setSelection(0);
                     });
                 }
 
@@ -357,7 +372,7 @@ public class Scorecard_fragment extends Fragment {
                 return;
             }
         }
-        matches.add(new Match(id,homeTeam.getText().toString()+"-"
+        matches.add(new Match(id,homeTeam.getText().toString()
                 ,awayTeam.getText().toString(),roundOneScoreHome.getText().toString()
                 ,roundTwoScoreHome.getText().toString()
                 ,homeScore.getText().toString()
@@ -684,6 +699,7 @@ public class Scorecard_fragment extends Fragment {
 
 
         //Reading score
+        homePlayer2.setText(th.get(1).getPlayer());
 
         homePlayer2Throw1.setText(th.get(1).getScoreFirst());
         homePlayer2Throw2.setText(th.get(1).getScoreSecond());

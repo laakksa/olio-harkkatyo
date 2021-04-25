@@ -81,8 +81,8 @@ public class EntryManager {
         }
     }
 
+    //Get 30min temperature data from FMI API between startdate and enddate and return it as ArrayList
     public ArrayList<WeatherEntry> getWeather(String startdate, String enddate) {
-        //Get 30min temperature data between startdate and enddate and return it as ArrayList
         ArrayList<WeatherEntry> entries = null;
         String weatherUrl = "https://opendata.fmi.fi/wfs/fin?service=WFS&" +
                 "version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::" +
@@ -99,7 +99,7 @@ public class EntryManager {
         return entries;
     }
 
-    //Get match data from Kyykka.com API and store it in matchesList
+    //Get match data from Kyykka.com API and store it in ArrayList matchesList
     public void getMatches() {
         String matchUrl = "https://kyykka.com/api/matches/?format=json&season=2";
         String result;

@@ -20,12 +20,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.concurrent.ExecutionException;
+
+//This fragment opens when clicking on leaderboard in bottom navigation bar
 public class LeaderBoardFragment extends Fragment {
     View v;
     TableLayout table;
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_leaderboard, container, false);
         table = v.findViewById(R.id.LeaderBoardTable);
 

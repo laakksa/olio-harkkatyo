@@ -47,7 +47,7 @@ public class XMLAsyncTask extends AsyncTask<String, Void, ArrayList<WeatherEntry
                 int eventType = parser.getEventType();
                 WeatherEntry currentEntry = null;
                 int counter= 0;
-                //Adds time and temperaturevalue to WeatheEntry and adds it to ArrayList
+                //Adds time and temperature value to WeatherEntry and adds it to ArrayList
                 while (eventType != XmlPullParser.END_DOCUMENT) {
                     counter++;
                     String elementName;
@@ -59,6 +59,7 @@ public class XMLAsyncTask extends AsyncTask<String, Void, ArrayList<WeatherEntry
                                 currentEntry = new WeatherEntry(id);
                                 weatherList.add(currentEntry);
                             } else if (currentEntry != null) {
+                                //Add timestamp and temperature value to weatherEntry
                                 if (elementName.equals("wml2:time")) {
                                     currentEntry.setTime(parser.nextText());
                                 } else if (elementName.equals("wml2:value")) {
@@ -72,7 +73,6 @@ public class XMLAsyncTask extends AsyncTask<String, Void, ArrayList<WeatherEntry
             }
         } catch (IOException e){
             e.printStackTrace();
-            parser = null;
         } catch (XmlPullParserException e){
             e.printStackTrace();
         }

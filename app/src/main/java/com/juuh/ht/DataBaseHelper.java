@@ -14,8 +14,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String DBNAME = "Login.db";
 
     public DataBaseHelper(Context context) {
-        super(context, "Login.db",
-                null, 1);
+
+        super(context, "Login.db", null,
+                1);
     }
 
     @Override

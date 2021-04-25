@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
+//These entries are used for storing data from Kyykka.com and FMI APIs
 public class Entry {
     int id;
     public Entry(int id){
