@@ -87,7 +87,11 @@ public class Scorecard_fragment extends Fragment {
                     ID += "1";
                     System.out.println(ID);
                     System.out.println("MatchID = 0");
-                    button.setOnClickListener(view1 -> saveGame(matches,ID));
+                    button.setOnClickListener(view1 -> {saveGame(matches,ID);
+                        readGame("0","","",""
+                                ,"",""
+                                ,"","",""
+                                ,"");});
                 }
 
 
@@ -97,7 +101,12 @@ public class Scorecard_fragment extends Fragment {
                     ,match.getRoundTwoHomeScore(),match.getHomeFinalScore()
                     ,match.getRoundOneAwayScore(),match.getRoundTwoAwayScore()
                     ,match.getAwayFinalScore(),match.getDate());
-                    button.setOnClickListener(view12 -> saveGame(matches,match.getId()));
+                    button.setOnClickListener(view12 -> {saveGame(matches,match.getId());
+                        readGame("0","","",""
+                                ,"",""
+                                ,"","",""
+                                ,"");});
+
                     button2.setOnClickListener(v -> {
                         removeMatch(matches,match.getId());
                         readGame("0","","",""
