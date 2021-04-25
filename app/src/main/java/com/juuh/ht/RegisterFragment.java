@@ -111,6 +111,9 @@ public class RegisterFragment extends Fragment {
 
     }
 
+    /*This method takes in the password as an string parameter and returns boolean. It checks if
+    the password meets the criterias for a good password. If the password meets the criterias
+    the method will return true, otherwise false.         */
     public Boolean checkpasswordcriterias(String password) {
         char ch;
         boolean capitalFlag = false;

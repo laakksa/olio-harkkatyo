@@ -6,12 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-//This class manges the database where passwords are saved
+//This class manages the database where passwords are saved
 //Source: https://www.youtube.com/watch?v=8obgNNlj3Eo
 
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -19,7 +14,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String DBNAME = "Login.db";
 
     public DataBaseHelper(Context context) {
-        super(context, "Login.db", null, 1);
+        super(context, "Login.db",
+                null, 1);
     }
 
     @Override
@@ -44,6 +40,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
+    //Deletes user and returns if it was succesful
     public boolean deleteData(String username) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         long result = MyDB.delete("users", "username = ?",
@@ -53,7 +50,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
-
+    //Checks if username is already in the database
     public Boolean checkusername (String username) {
         SQLiteDatabase MyDB = this. getWritableDatabase();
         Cursor cursor = MyDB.rawQuery("Select * from users where username = ?",
@@ -64,6 +61,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    //Checks if username and password are matching with the ones in the database
     public Boolean checkusernamepassword(String username, String password) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor cursor = MyDB.rawQuery("Select * from users where " +
@@ -74,6 +72,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    //Gets the salt from the database for the spesific username
     public String getSalt(String username) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
         Cursor cursor = MyDB.rawQuery("Select salt from users where username = ?",

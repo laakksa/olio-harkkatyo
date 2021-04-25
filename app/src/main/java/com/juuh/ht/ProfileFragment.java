@@ -76,6 +76,9 @@ public class ProfileFragment extends Fragment {
         TextInputLayout newLayout = (TextInputLayout) view.findViewById(R.id.newLayout);
         TextInputLayout renewLayout = (TextInputLayout) view.findViewById(R.id.renewLayout);
 
+        /*When btnreset button is pressed onClick() checks if current password and new passwords
+        fills the criterias and resets the password. Current password is also compared to the password in the database.
+        If everything is fine the new password will get also a new salt.*/
         btnreset.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -133,6 +136,9 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        /*Btnlogout sends null to currentUser in preferences so that the application knows
+        that the user is not anymore logged in.Btnlogout also changes the fragment to login fragment
+        because the user is not not logged in.         */
         btnlogout = v.findViewById(R.id.logoutbtn);
         btnlogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,6 +156,9 @@ public class ProfileFragment extends Fragment {
 
     }
 
+        /*This method takes in the password as an string parameter and returns boolean. It checks if
+        the password meets the criterias for a good password. If the password meets the criterias
+        the method will return true, otherwise false.         */
         public Boolean checkpasswordcriterias(String password) {
             char ch;
             boolean capitalFlag = false;
