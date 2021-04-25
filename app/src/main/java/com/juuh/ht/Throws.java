@@ -1,5 +1,7 @@
 package com.juuh.ht;
 
+//Throws contains data of every throw
+
 public class Throws {
 
     private int throw_turn;
